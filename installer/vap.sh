@@ -14,6 +14,7 @@ USER_FLAVORS_JSON="$BASE_DIR/userFlavors.json"
 IMAGES_JSON="$BASE_DIR/images.json"
 SUBNETS_JSON="$BASE_DIR/subnets.json"
 KEYPAIRS_JSON="$BASE_DIR/keypairs.json"
+VOLUMES_JSON="$BASE_DIR/volumes.json"
 
 MIN_INFRA_VCPU=2
 MIN_INFRA_RAM=15400
@@ -296,6 +297,58 @@ getKeypairs(){
       Name=$(_jq '.Name')
       Fingerprint=$(_jq '.Fingerprint')
       printf "$rows" "$id" "$Name" "$Fingerprint"
+    done
+  fi
+}
+
+getVolumes(){
+  local id=0
+  local volumes=$(jq -n '[]')
+  local cmd="${OPENSTACK} volume type list -f json | jq 'del(.[] | select(.Name == "EC"))'"
+  local full_volumes=$(execReturn "${cmd}" "Getting volumes list")
+
+  source ${VAP_ENVS}
+
+  for row in $(echo "${full_volumes}" | jq -r '.[] | @base64'); do
+    _jq() {
+     echo "${row}" | base64 --decode | jq -r "${1}"
+    }
+    Name=$(_jq '.Name')
+
+    id=$((id+1))
+    ID=$(_jq '.ID')
+    IsPublic=$(_jq '.Is Public')
+
+    volumes=$(echo $volumes | jq \
+      --argjson id "$id" \
+      --arg Name "$Name" \
+      --arg ID "$ID" \
+      --arg IsPublic  "$IsPublic" \
+    '. += [{"id": $id, "Name": $Name, "ID": $ID, "Is Public": $IsPublic}]')
+  done
+
+  local output="{\"result\": 0, \"volumes\": ${volumes}}"
+  echo $volumes > ${VOLUMES_JSON}
+
+  if [[ "x${FORMAT}" == "xjson" ]]; then
+    log "Validation volumes...done";
+  else
+    seperator=---------------------------------------------------------------------------------------------------
+    rows="%-5s| %-50s| %s\n"
+    TableWidth=100
+    echo -e "\n\nVHI Volumes List"
+    printf "%.${TableWidth}s\n" "$seperator"
+    printf "%-5s| %-50s| %s\n" ID Name "Is Public"
+    printf "%.${TableWidth}s\n" "$seperator"
+
+    for row in $(echo "${volumes}" | jq -r '.[] | @base64'); do
+      _jq() {
+        echo "${row}" | base64 --decode | jq -r "${1}"
+      }
+      id=$(_jq '.id')
+      Name=$(_jq '.Name')
+      Fingerprint=$(_jq '.Is Public')
+      printf "$rows" "$id" "$Name" "$IsPublic"
     done
   fi
 }
@@ -633,6 +686,10 @@ case ${1} in
       
     getKeypairs)
       getKeypairs "$@"
+      ;;
+      
+    getVolumes)
+      getVolumes "$@"
       ;;
 
     *)
