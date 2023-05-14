@@ -304,8 +304,9 @@ getKeypairs(){
 getVolumes(){
   local id=0
   local volumes=$(jq -n '[]')
-  local cmd="${OPENSTACK} volume type list -f json | jq 'del(.[] | select(.Name == "EC"))'"
+  local cmd="${OPENSTACK} volume type list -f json"
   local full_volumes=$(execReturn "${cmd}" "Getting volumes list")
+  full_volumes=$(echo ${full_volumes} | jq 'del(.[] | select(.Name == "EC"))')
 
   source ${VAP_ENVS}
 
@@ -317,7 +318,7 @@ getVolumes(){
 
     id=$((id+1))
     ID=$(_jq '.ID')
-    IsPublic=$(_jq '.Is Public')
+    IsPublic=$(_jq '."Is Public"')
 
     volumes=$(echo $volumes | jq \
       --argjson id "$id" \
