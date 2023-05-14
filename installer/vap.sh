@@ -348,7 +348,7 @@ getVolumes(){
       }
       id=$(_jq '.id')
       Name=$(_jq '.Name')
-      Fingerprint=$(_jq '.Is Public')
+      Fingerprint=$(_jq '."Is Public"')
       printf "$rows" "$id" "$Name" "$IsPublic"
     done
   fi
@@ -479,6 +479,7 @@ configure(){
   getUserFlavors
   getSubnets
   getImages
+  getVolumes
 
   if [ -n "${NEW_SSH_KEY_NAME}" ]; then
       if [ ! -f '~/.ssh/id_rsa' ]; then
