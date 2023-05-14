@@ -526,6 +526,16 @@ create(){
       shift
       shift
       ;;
+      --user-volume=*)
+      USER_VOLUME=${i#*=}
+      shift
+      shift
+      ;;
+      --infra-volume=*)
+      INFRA_VOLUME=${i#*=}
+      shift
+      shift
+      ;;
       --infra-root-size=*)
       INFRA_ROOT_SIZE=${i#*=}
       shift
