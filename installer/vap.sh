@@ -609,6 +609,8 @@ create(){
   createcmd+=" --parameter public_subnet=${PUBLIC_SUBNET}"
   createcmd+=" --parameter infra_flavor=${INFRA_FLAVOR}"
   createcmd+=" --parameter user_flavor=${USER_FLAVOR}"
+  createcmd+=" --parameter infra_volume=${INFRA_VOLUME}"
+  createcmd+=" --parameter user_volume=${USER_VOLUME}"
   createcmd+=" --parameter infra_root_volume_size=${INFRA_ROOT_SIZE}"
   createcmd+=" --parameter user_root_volume_size=${USER_ROOT_SIZE}"
   createcmd+=" --parameter infra_vz_volume_size=${INFRA_VZ_SIZE}"
