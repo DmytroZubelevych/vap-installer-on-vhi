@@ -601,6 +601,9 @@ create(){
   NETWORK=$(_getValueById $SUBNET "Network" "subnets.json")
   INFRA_FLAVOR=$(_getValueById $INFRA_FLAVOR "Value" "infraFlavors.json")
   USER_FLAVOR=$(_getValueById $USER_FLAVOR "Value" "userFlavors.json")
+  
+  INFRA_VOLUME=$(_getValueById $INFRA_VOLUME "ID" "volumes.json")
+  USER_VOLUME=$(_getValueById $USER_VOLUME "ID" "volumes.json")
 
   local createcmd="${OPENSTACK} stack create ${VAP_STACK_NAME} -t VAP.yaml"
   createcmd+=" --parameter image=${IMAGE}"
