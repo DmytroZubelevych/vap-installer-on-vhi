@@ -304,7 +304,7 @@ getKeypairs(){
 getVolumes(){
   local id=0
   local volumes=$(jq -n '[]')
-  local cmd="${OPENSTACK} volume type list -f json"
+  local cmd="${OPENSTACK} volume type list -f json --insecure"
   local full_volumes=$(execReturn "${cmd}" "Getting volumes list")
   full_volumes=$(echo ${full_volumes} | jq 'del(.[] | select(.Name == "EC"))')
 
