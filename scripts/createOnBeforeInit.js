@@ -61,6 +61,18 @@
         return aResultValues;
       }
 
+      function prepareStoragePoliciesList(values) {
+        var aResultValues = [];
+        values = values || [];
+        for (var i = 0, n = values.length; i < n; i++) {
+          aResultValues.push({
+            caption: values[i].Subnet,
+            value: values[i].id
+          });   
+        }
+        return aResultValues;
+      }
+
       function prepareImageList(values) {
         var aResultValues = [];
         values = values || [];
