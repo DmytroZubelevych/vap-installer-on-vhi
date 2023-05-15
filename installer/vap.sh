@@ -718,8 +718,8 @@ case ${1} in
       getKeypairs "$@"
       ;;
       
-    getVolumes)
-      getVolumes "$@"
+    getStoragePolicies)
+      getStoragePolicies "$@"
       ;;
 
     *)
