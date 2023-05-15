@@ -105,5 +105,9 @@
       fields["image_name"].values = imageListPrepared;
       fields["ssh_key"].values = sshKeysPrepared;
       fields["ssh_key"].default = currentSSHKey;
+
+      fields["root_storage_policy"].values = storagePoliciesListPrepared;
+      fields["user_storage_policy"].values = storagePoliciesListPrepared;
+      fields["infra_storage_policy"].values = storagePoliciesListPrepared;
       
       return settings;
