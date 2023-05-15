@@ -81,7 +81,7 @@ settings:
       type: list
       name: ssh_key
       tooltip:
-        text: "Pick the <b>SSH Key</b> to be injected into Infra and User Nodes (Virtual Machines). If you chose the <b>New SSH Key</b> option on previous <b>Configure</b> step, a new SSH key pair will be generated, and your environment and VHI cluster will be configured automatically for new SSH keypair usage. If you want to use already existing <b>SSH Key</b> available on VHI cluster, please choose among available ones in the list. <a href='https://docs.DmytroZubelevych.com/DmytroZubelevych_hybrid_infrastructure_4_6_admins_guide/index.html?TocPath=Management%257CManaging%2520the%2520compute%2520cluster%257CManaging%2520virtual%2520machines%257C_____4#adding-ssh-keys.html?TocPath=Management%257CManaging%2520the%2520compute%2520cluster%257CManaging%2520virtual%2520machines%257C_____4' target='_blank'>Learn More</a> about SSH key pairs in VHI cluster.<p></p>"
+        text: "Pick the <b>SSH Key</b> to be injected into Infra and User Nodes (Virtual Machines). If you chose the <b>New SSH Key</b> option on previous <b>Configure</b> step, a new SSH key pair will be generated, and your environment and VHI cluster will be configured automatically for new SSH keypair usage. If you want to use already existing <b>SSH Key</b> available on VHI cluster, please choose among available ones in the list. <a href='https://docs.virtuozzo.com/virtuozzo_hybrid_infrastructure_4_6_admins_guide/index.html?TocPath=Management%257CManaging%2520the%2520compute%2520cluster%257CManaging%2520virtual%2520machines%257C_____4#adding-ssh-keys.html?TocPath=Management%257CManaging%2520the%2520compute%2520cluster%257CManaging%2520virtual%2520machines%257C_____4' target='_blank'>Learn More</a> about SSH key pairs in VHI cluster.<p></p>"
     - caption: Installation type
       type: list
       name: inst_type
@@ -110,7 +110,7 @@ settings:
             values: infraFlavorListPrepared
             type: list
             tooltip: 
-              text: "<h2>PoC Installation Type</h2>Make sure the Flavor meets the requirements for <b>Infra</b> nodes. <a href='https://www.DmytroZubelevych.com/application-platform-ops-docs/hardware-requirements-local-storage/' target='_blank'>Learn More</a><p></p> <img width='600' height='250' src='https://raw.githubusercontent.com/DmytroZubelevych/vap-installer-on-vhi/master/images/poc-requirements.svg'>"
+              text: "<h2>PoC Installation Type</h2>Make sure the Flavor meets the requirements for <b>Infra</b> nodes. <a href='https://www.virtuozzo.com/application-platform-ops-docs/hardware-requirements-local-storage/' target='_blank'>Learn More</a><p></p> <img width='600' height='250' src='https://raw.githubusercontent.com/virtuozzo/vap-installer-on-vhi/master/images/poc-requirements.svg'>"
               tipParams:
               maxWidth: 830
               minWidth: 300
@@ -120,7 +120,7 @@ settings:
             values: userFlavorListPrepared
             type: list
             tooltip: 
-              text: "<h2>PoC Installation Type</h2>Make sure the Flavor meets the requirements for <b>User</b> nodes. <a href='https://www.DmytroZubelevych.com/application-platform-ops-docs/hardware-requirements-local-storage/' target='_blank'>Learn More</a><p></p> <img width='600' height='250' src='https://raw.githubusercontent.com/DmytroZubelevych/vap-installer-on-vhi/master/images/poc-requirements.svg'>"
+              text: "<h2>PoC Installation Type</h2>Make sure the Flavor meets the requirements for <b>User</b> nodes. <a href='https://www.virtuozzo.com/application-platform-ops-docs/hardware-requirements-local-storage/' target='_blank'>Learn More</a><p></p> <img width='600' height='250' src='https://raw.githubusercontent.com/virtuozzo/vap-installer-on-vhi/master/images/poc-requirements.svg'>"
               tipParams:
               maxWidth: 830
               minWidth: 300
@@ -131,7 +131,7 @@ settings:
             values: infraFlavorListPrepared
             type: list
             tooltip: 
-              text: "<h2>Sandbox Installation Type</h2>Make sure the Flavor meets the requirements for <b>Infra</b> nodes. <a href='https://www.DmytroZubelevych.com/application-platform-ops-docs/hardware-requirements-local-storage/' target='_blank'>Learn More</a><p></p> <img width='600' height='250' src='https://raw.githubusercontent.com/DmytroZubelevych/vap-installer-on-vhi/master/images/sandbox-requirements.svg'>"
+              text: "<h2>Sandbox Installation Type</h2>Make sure the Flavor meets the requirements for <b>Infra</b> nodes. <a href='https://www.virtuozzo.com/application-platform-ops-docs/hardware-requirements-local-storage/' target='_blank'>Learn More</a><p></p> <img width='600' height='250' src='https://raw.githubusercontent.com/virtuozzo/vap-installer-on-vhi/master/images/sandbox-requirements.svg'>"
               tipParams:
               maxWidth: 830
               minWidth: 300
@@ -141,7 +141,7 @@ settings:
             values: userFlavorListPrepared
             type: list
             tooltip: 
-              text: "<h2>Sandbox Installation Type</h2>Make sure the Flavor meets the requirements for <b>User</b> nodes. <a href='https://www.DmytroZubelevych.com/application-platform-ops-docs/hardware-requirements-local-storage/' target='_blank'>Learn More</a><p></p> <img width='600' height='250' src='https://raw.githubusercontent.com/DmytroZubelevych/vap-installer-on-vhi/master/images/sandbox-requirements.svg'>"
+              text: "<h2>Sandbox Installation Type</h2>Make sure the Flavor meets the requirements for <b>User</b> nodes. <a href='https://www.virtuozzo.com/application-platform-ops-docs/hardware-requirements-local-storage/' target='_blank'>Learn More</a><p></p> <img width='600' height='250' src='https://raw.githubusercontent.com/virtuozzo/vap-installer-on-vhi/master/images/sandbox-requirements.svg'>"
               tipParams:
               maxWidth: 830
               minWidth: 300
@@ -152,7 +152,7 @@ settings:
             values: infraFlavorListPrepared
             type: list
             tooltip: 
-              text: " <h2>Production Installation Type</h2>Make sure the Flavor meets the requirements for <b>Infra</b> nodes. <a href='https://www.DmytroZubelevych.com/application-platform-ops-docs/hardware-requirements-local-storage/' target='_blank'>Learn More</a><p></p> <img width='600' height='250' src='https://raw.githubusercontent.com/DmytroZubelevych/vap-installer-on-vhi/master/images/performance-requirements.svg'>"
+              text: " <h2>Production Installation Type</h2>Make sure the Flavor meets the requirements for <b>Infra</b> nodes. <a href='https://www.virtuozzo.com/application-platform-ops-docs/hardware-requirements-local-storage/' target='_blank'>Learn More</a><p></p> <img width='600' height='250' src='https://raw.githubusercontent.com/virtuozzo/vap-installer-on-vhi/master/images/performance-requirements.svg'>"
               tipParams:
               maxWidth: 830
               minWidth: 300
@@ -162,7 +162,7 @@ settings:
             values: userFlavorListPrepared
             type: list
             tooltip: 
-              text: " <h2>Production Installation Type</h2>Make sure the Flavor meets the requirements for <b>User</b> nodes. <a href='https://www.DmytroZubelevych.com/application-platform-ops-docs/hardware-requirements-local-storage/' target='_blank'>Learn More</a><p></p> <img width='600' height='250' src='https://raw.githubusercontent.com/DmytroZubelevych/vap-installer-on-vhi/master/images/performance-requirements.svg'>"
+              text: " <h2>Production Installation Type</h2>Make sure the Flavor meets the requirements for <b>User</b> nodes. <a href='https://www.virtuozzo.com/application-platform-ops-docs/hardware-requirements-local-storage/' target='_blank'>Learn More</a><p></p> <img width='600' height='250' src='https://raw.githubusercontent.com/virtuozzo/vap-installer-on-vhi/master/images/performance-requirements.svg'>"
               tipParams:
               maxWidth: 830
               minWidth: 300
@@ -173,7 +173,7 @@ settings:
             values: infraFlavorListPrepared
             type: list
             tooltip: 
-              text: "<h2>High Performance Production Installation Type</h2>Make sure the Flavor meets the requirements for <b>Infra</b> nodes. <a href='https://www.DmytroZubelevych.com/application-platform-ops-docs/hardware-requirements-local-storage/' target='_blank'>Learn More</a><p></p> <img width='600' height='250' src='https://raw.githubusercontent.com/DmytroZubelevych/vap-installer-on-vhi/master/images/high-performance-requirements.svg'>"
+              text: "<h2>High Performance Production Installation Type</h2>Make sure the Flavor meets the requirements for <b>Infra</b> nodes. <a href='https://www.virtuozzo.com/application-platform-ops-docs/hardware-requirements-local-storage/' target='_blank'>Learn More</a><p></p> <img width='600' height='250' src='https://raw.githubusercontent.com/virtuozzo/vap-installer-on-vhi/master/images/high-performance-requirements.svg'>"
               tipParams:
               maxWidth: 830
               minWidth: 300
@@ -183,7 +183,7 @@ settings:
             values: userFlavorListPrepared
             type: list
             tooltip: 
-              text: "<h2>High Performance Production Installation Type</h2>Make sure the Flavor meets the requirements for <b>User</b> nodes. <a href='https://www.DmytroZubelevych.com/application-platform-ops-docs/hardware-requirements-local-storage/' target='_blank'>Learn More</a><p></p> <img width='600' height='250' src='https://raw.githubusercontent.com/DmytroZubelevych/vap-installer-on-vhi/master/images/high-performance-requirements.svg'>"
+              text: "<h2>High Performance Production Installation Type</h2>Make sure the Flavor meets the requirements for <b>User</b> nodes. <a href='https://www.virtuozzo.com/application-platform-ops-docs/hardware-requirements-local-storage/' target='_blank'>Learn More</a><p></p> <img width='600' height='250' src='https://raw.githubusercontent.com/virtuozzo/vap-installer-on-vhi/master/images/high-performance-requirements.svg'>"
               tipParams:
               maxWidth: 830
               minWidth: 300
