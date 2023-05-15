@@ -631,22 +631,51 @@ create(){
   createcmd+=" --parameter key_name=${KEY_NAME}"
   createcmd+=" --wait"
 
+  local checkstackcmd="openstack stack show ${VAP_STACK_NAME}"
+
+  local result="0";
+  
+  if [[ "x${FORMAT}" == "xjson" ]]; then
+      local message="Checking if ${VAP_STACK_NAME} exists"
+      source ${VAP_ENVS}
+      stdout=$( { ${checkstackcmd}; } 2>&1 ) && { log "${message}...done"; execResponse "99" "Stack ${VAP_STACK_NAME} is not created because it already exists. See ${RUN_LOG} for details."; return 1; } || {
+        log "${message}...not exists\n${stdout}\n";
+      }
+  else
+      ${checkstackcmd} && { execResponse "99" "Stack ${VAP_STACK_NAME} is not created because stack with the same name already exists. See ${RUN_LOG} for details."; return 1; } || { true; }
+  fi
+
   if [[ "x${FORMAT}" == "xjson" ]]; then
       execAction "${createcmd}" "Creating new stack";
       result=$?
+      local message="Creating new stack"
+      source ${VAP_ENVS}
+      stdout=$( { ${createcmd}; } 2>&1 ) && { log "${message}...done";  } || {
+        result=$?; log "${message}...failed\n${stdout}\n";
+      }
   else
       ${createcmd};
       result=$?
   fi
-
   if [ "$result" -eq 0 ]; then
       web_link=$(getWebinstallerLink ${VAP_STACK_NAME})
-
       if [[ "x${FORMAT}" == "xjson" ]]; then
           execResponse "${SUCCESS_CODE}" "$web_link";
       else
           echo "Web Installer Link: $web_link";
       fi
+  else
+      local deletecmd="${OPENSTACK} stack delete ${VAP_STACK_NAME} --yes --wait"
+      if [[ "x${FORMAT}" == "xjson" ]]; then
+        message="Deletion of failed stack ${VAP_STACK_NAME} artifacts."
+        source ${VAP_ENVS}
+        stdout=$( { ${deletecmd}; } 2>&1 ) && { log "${message}...done";  } || {
+          log "${message}...failed\n${stdout}\n";
+        }
+      else
+        ${deletecmd};
+      fi
+      execResponse "99" "Stack ${VAP_STACK_NAME} creation failed. See ${RUN_LOG} for details.";
   fi
 
 }
