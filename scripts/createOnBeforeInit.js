@@ -1,5 +1,7 @@
       var infraFlavorList = getJsonFromFile("infraFlavors.json");
       var infraFlavorListPrepared = prepareFlavorsList(JSON.parse(infraFlavorList));
+      var storagePoliciesList = getJsonFromFile("volumeTypes.json");
+      var storagePoliciesListPrepared = preparePoliciesListList(JSON.parse(storagePoliciesList));
       var userFlavorList = getJsonFromFile("userFlavors.json");
       var userFlavorListPrepared = prepareFlavorsList(JSON.parse(userFlavorList));
       var imagesList = getJsonFromFile("images.json");
@@ -66,7 +68,7 @@
         values = values || [];
         for (var i = 0, n = values.length; i < n; i++) {
           aResultValues.push({
-            caption: values[i].Subnet,
+            caption: values[i].Name,
             value: values[i].id
           });   
         }
