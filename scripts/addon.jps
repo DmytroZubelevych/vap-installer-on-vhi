@@ -425,6 +425,9 @@ actions:
         "--infra-swap-size=${settings.infra_swap_storage_size} " +
         "--user-swap-size=${settings.user_swap_storage_size} " +
         "--key-name=${settings.ssh_key} " +
+        "--root-storage-policy=${settings.root_storage_policy} " +
+        "--infra-storage-policy=${settings.infra_storage_policy} " +
+        "--user-storage-policy=${settings.user_storage_policy} " +
         "--format=json";
         var resp = jelastic.env.control.ExecCmdById('${env.envName}', session, '${nodes.cp.master.id}', toJSON([{ command: cmd }]), true);
         if (resp.result != 0) return resp;
