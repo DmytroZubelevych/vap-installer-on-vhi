@@ -110,4 +110,8 @@
       fields["user_storage_policy"].values = storagePoliciesListPrepared;
       fields["infra_storage_policy"].values = storagePoliciesListPrepared;
       
+      fields["root_storage_policy"].default = storagePoliciesListPrepared[0];
+      fields["user_storage_policy"].default = storagePoliciesListPrepared[0];
+      fields["infra_storage_policy"].default = storagePoliciesListPrepared[0];
+
       return settings;
