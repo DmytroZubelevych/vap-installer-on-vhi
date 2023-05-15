@@ -584,7 +584,6 @@ create(){
   if [ -z "${IMAGE}" ] || [ -z "${USER_HOST_COUNT}" ] || \
      [ -z "${SUBNET}" ] ||  [ -z "${USER_FLAVOR}" ] || \
      [ -z "${INFRA_FLAVOR}" ] ||  [ -z "${INFRA_ROOT_SIZE}" ] || \
-     [ -z "${ROOT_STORAGE_POLICY}" ] ||  [ -z "${INFRA_STORAGE_POLICY}" ] || [ -z "${USER_STORAGE_POLICY}" ] || \
      [ -z "${USER_ROOT_SIZE}" ] ||  [ -z "${INFRA_VZ_SIZE}" ] || [ -z "${USER_VZ_SIZE}" ]; then
 
       echo "Not all arguments passed!"
@@ -625,9 +624,15 @@ create(){
   createcmd+=" --parameter user_vz_volume_size=${USER_VZ_SIZE}"
   createcmd+=" --parameter infra_swap_volume_size=${INFRA_SWAP_VOLUME_SIZE}"
   createcmd+=" --parameter user_swap_volume_size=${USER_SWAP_VOLUME_SIZE}"
-  createcmd+=" --parameter storage_policy_root=${ROOT_STORAGE_POLICY}" 
-  createcmd+=" --parameter storage_policy_infra_vz=${INFRA_STORAGE_POLICY}" 
-  createcmd+=" --parameter storage_policy_user_vz=${USER_STORAGE_POLICY}" 
+  if [ ! -z "${ROOT_STORAGE_POLICY}" ]; then
+      createcmd+=" --parameter storage_policy_root=${ROOT_STORAGE_POLICY}" 
+  fi
+  if [ ! -z "${INFRA_STORAGE_POLICY}" ]; then
+      createcmd+=" --parameter storage_policy_infra_vz=${INFRA_STORAGE_POLICY}"
+  fi
+  if [ ! -z "${USER_STORAGE_POLICY}" ]; then
+      createcmd+=" --parameter storage_policy_user_vz=${USER_STORAGE_POLICY}"
+  fi
   createcmd+=" --parameter key_name=${KEY_NAME}"
   createcmd+=" --wait"
 
@@ -646,8 +651,6 @@ create(){
   fi
 
   if [[ "x${FORMAT}" == "xjson" ]]; then
-      execAction "${createcmd}" "Creating new stack";
-      result=$?
       local message="Creating new stack"
       source ${VAP_ENVS}
       stdout=$( { ${createcmd}; } 2>&1 ) && { log "${message}...done";  } || {
