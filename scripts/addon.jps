@@ -298,6 +298,33 @@ settings:
       name: image_name
       required: true
       values: imageListPrepared
+
+    - caption: Root Storage Policy
+      type: list
+      tooltip:
+        text: Select required <b>qcow2</b> VAP image name
+        minWidth: 270
+      name: root_storage_policy
+      required: true
+      values: storagePoliciesListPrepared
+      
+    - caption: User Storage Policy
+      type: list
+      tooltip:
+        text: Select required <b>qcow2</b> VAP image name
+        minWidth: 270
+      name: user_storage_policy
+      required: true
+      values: storagePoliciesListPrepared
+      
+    - caption: Infra Storage Policy
+      type: list
+      tooltip:
+        text: Select required <b>qcow2</b> VAP image name
+        minWidth: 270
+      name: infra_storage_policy
+      required: true
+      values: storagePoliciesListPrepared
       
     onBeforeInit: scripts/createOnBeforeInit.js?_r=${fn.random}
 

@@ -526,6 +526,21 @@ create(){
       shift
       shift
       ;;
+      --root-storage-policy=*)
+      ROOT_STORAGE_POLICY=${i#*=}
+      shift
+      shift
+      ;;
+      --user-storage-policy=*)
+      USER_STORAGE_POLICY=${i#*=}
+      shift
+      shift
+      ;;
+      --infra-storage-policy=*)
+      INFRA_STORAGE_POLICY=${i#*=}
+      shift
+      shift
+      ;;
       --infra-root-size=*)
       INFRA_ROOT_SIZE=${i#*=}
       shift
@@ -569,6 +584,7 @@ create(){
   if [ -z "${IMAGE}" ] || [ -z "${USER_HOST_COUNT}" ] || \
      [ -z "${SUBNET}" ] ||  [ -z "${USER_FLAVOR}" ] || \
      [ -z "${INFRA_FLAVOR}" ] ||  [ -z "${INFRA_ROOT_SIZE}" ] || \
+     [ -z "${ROOT_STORAGE_POLICY}" ] ||  [ -z "${INFRA_STORAGE_POLICY}" ] || [ -z "${USER_STORAGE_POLICY}" ] || \
      [ -z "${USER_ROOT_SIZE}" ] ||  [ -z "${INFRA_VZ_SIZE}" ] || [ -z "${USER_VZ_SIZE}" ]; then
 
       echo "Not all arguments passed!"
@@ -592,9 +608,9 @@ create(){
   INFRA_FLAVOR=$(_getValueById $INFRA_FLAVOR "Value" "infraFlavors.json")
   USER_FLAVOR=$(_getValueById $USER_FLAVOR "Value" "userFlavors.json")
   
-  #ROOT_STORAGE_POLICY=$(_getValueById $ROOT_STORAGE_POLICY "ID" "volumeTypes.json")
-  #INFRA_STORAGE_POLICY=$(_getValueById $INFRA_STORAGE_POLICY "ID" "volumeTypes.json")
-  #USER_STORAGE_POLICY=$(_getValueById $USER_STORAGE_POLICY "ID" "volumeTypes.json")
+  ROOT_STORAGE_POLICY=$(_getValueById $ROOT_STORAGE_POLICY "ID" "volumeTypes.json")
+  INFRA_STORAGE_POLICY=$(_getValueById $INFRA_STORAGE_POLICY "ID" "volumeTypes.json")
+  USER_STORAGE_POLICY=$(_getValueById $USER_STORAGE_POLICY "ID" "volumeTypes.json")
 
   local createcmd="${OPENSTACK} stack create ${VAP_STACK_NAME} -t VAP.yaml"
   createcmd+=" --parameter image=${IMAGE}"
@@ -609,6 +625,9 @@ create(){
   createcmd+=" --parameter user_vz_volume_size=${USER_VZ_SIZE}"
   createcmd+=" --parameter infra_swap_volume_size=${INFRA_SWAP_VOLUME_SIZE}"
   createcmd+=" --parameter user_swap_volume_size=${USER_SWAP_VOLUME_SIZE}"
+  createcmd+=" --parameter storage_policy_root=${ROOT_STORAGE_POLICY}" 
+  createcmd+=" --parameter storage_policy_infra_vz=${INFRA_STORAGE_POLICY}" 
+  createcmd+=" --parameter storage_policy_user_vz=${USER_STORAGE_POLICY}" 
   createcmd+=" --parameter key_name=${KEY_NAME}"
   createcmd+=" --wait"
 
