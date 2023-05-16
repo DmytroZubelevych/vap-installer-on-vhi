@@ -109,8 +109,6 @@ instTypeFields.prod[1].values = userFlavorListPrepared;
 instTypeFields.high_prod[0].values = infraFlavorListPrepared;
 instTypeFields.high_prod[1].values = userFlavorListPrepared;
 fields["vap_stack_name"].value = vapStackName;
-fields["subnet"].values = subnetListPrepared;
-fields["image_name"].values = imageListPrepared;
 fields["ssh_key"].values = sshKeysPrepared;
 fields["ssh_key"].
 default = currentSSHKey;
