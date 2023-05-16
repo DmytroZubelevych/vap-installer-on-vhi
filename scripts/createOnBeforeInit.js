@@ -116,7 +116,7 @@ fields["ssh_key"].
 default = currentSSHKey;
 
 
-settings.fields.push({
+settings.fields.push([{
     "type": "compositefield",
     "caption": "Storage Policies",
     "defaultMargins": "0 12 0 0",
@@ -149,41 +149,38 @@ settings.fields.push({
         "name": "user_storage_policy",
         "values": storagePoliciesListPrepared,
         "width": 109
-    }],
-    {
-        "caption": "User Node Count",
-        "type": "spinner",
-        "tooltip": {
-            "text": "User Node Count to be created on the IaaS where the Infra nodes are.",
-            "minWidth": 135
-        },
-        "name": "user_node_count",
-        "default": 1,
-        "min": 0,
-        "max": 5
+    }]
+}, {
+    "caption": "User Node Count",
+    "type": "spinner",
+    "tooltip": {
+        "text": "User Node Count to be created on the IaaS where the Infra nodes are.",
+        "minWidth": 135
     },
-    {
-        "caption": "VHI Public Subnet",
-        "type": "list",
-        "tooltip": {
-            "text": "Select required VHI cluster subnet",
-            "minWidth": 240
-        },
-        "name": "subnet",
-        "required": true,
-        "values": "subnetListPrepared"
+    "name": "user_node_count",
+    "default": 1,
+    "min": 0,
+    "max": 5
+}, {
+    "caption": "VHI Public Subnet",
+    "type": "list",
+    "tooltip": {
+        "text": "Select required VHI cluster subnet",
+        "minWidth": 240
     },
-    {
-        "caption": "VAP Image Name",
-        "type": "list",
-        "tooltip": {
-            "text": "Select required <b>qcow2</b> VAP image name",
-            "minWidth": 270
-        },
-        "name": "image_name",
-        "required": true,
-        "values": "imageListPrepared"
-    }
-});
+    "name": "subnet",
+    "required": true,
+    "values": "subnetListPrepared"
+}, {
+    "caption": "VAP Image Name",
+    "type": "list",
+    "tooltip": {
+        "text": "Select required <b>qcow2</b> VAP image name",
+        "minWidth": 270
+    },
+    "name": "image_name",
+    "required": true,
+    "values": "imageListPrepared"
+}]);
 
 return settings;
