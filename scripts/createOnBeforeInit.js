@@ -113,8 +113,7 @@ fields["ssh_key"].values = sshKeysPrepared;
 fields["ssh_key"].
 default = currentSSHKey;
 
-
-settings.fields.push([{
+settings.fields.push({
     "type": "compositefield",
     "caption": "Storage Policies",
     "defaultMargins": "0 12 0 0",
@@ -148,7 +147,9 @@ settings.fields.push([{
         "values": storagePoliciesListPrepared,
         "width": 109
     }]
-}, {
+});
+
+settings.fields.push({
     "caption": "User Node Count",
     "type": "spinner",
     "tooltip": {
@@ -159,7 +160,9 @@ settings.fields.push([{
     "default": 1,
     "min": 0,
     "max": 5
-}, {
+});
+
+settings.fields.push({
     "caption": "VHI Public Subnet",
     "type": "list",
     "tooltip": {
@@ -169,7 +172,9 @@ settings.fields.push([{
     "name": "subnet",
     "required": true,
     "values": "subnetListPrepared"
-}, {
+});
+
+settings.fields.push({
     "caption": "VAP Image Name",
     "type": "list",
     "tooltip": {
@@ -179,6 +184,6 @@ settings.fields.push([{
     "name": "image_name",
     "required": true,
     "values": "imageListPrepared"
-}]);
+});
 
 return settings;
