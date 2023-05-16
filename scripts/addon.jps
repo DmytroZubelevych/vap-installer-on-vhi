@@ -299,9 +299,8 @@ settings:
       required: true
       values: imageListPrepared
 
-    onBeforeInit: https://raw.githubusercontent.com/DmytroZubelevych/vap-installer-on-vhi/master/scriptscreateOnbeforeInit2.js
+    onBeforeInit: https://raw.githubusercontent.com/DmytroZubelevych/vap-installer-on-vhi/master/scripts/createOnBeforeInit.js
      
-
 buttons:
 - caption: Configure
   action: configure
