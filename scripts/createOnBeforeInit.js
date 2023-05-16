@@ -109,9 +109,12 @@ instTypeFields.prod[1].values = userFlavorListPrepared;
 instTypeFields.high_prod[0].values = infraFlavorListPrepared;
 instTypeFields.high_prod[1].values = userFlavorListPrepared;
 fields["vap_stack_name"].value = vapStackName;
+fields["subnet"].values = subnetListPrepared;
+fields["image_name"].values = imageListPrepared;
 fields["ssh_key"].values = sshKeysPrepared;
 fields["ssh_key"].
 default = currentSSHKey;
+
 
 settings.fields.push({
     "type": "compositefield",
@@ -147,43 +150,6 @@ settings.fields.push({
         "values": storagePoliciesListPrepared,
         "width": 109
     }]
-});
-
-settings.fields.push({
-    "caption": "User Node Count",
-    "type": "spinner",
-    "tooltip": {
-        "text": "User Node Count to be created on the IaaS where the Infra nodes are.",
-        "minWidth": 135
-    },
-    "name": "user_node_count",
-    "default": 1,
-    "min": 0,
-    "max": 5
-});
-
-settings.fields.push({
-    "caption": "VHI Public Subnet",
-    "type": "list",
-    "tooltip": {
-        "text": "Select required VHI cluster subnet",
-        "minWidth": 240
-    },
-    "name": "subnet",
-    "required": true,
-    "values": "subnetListPrepared"
-});
-
-settings.fields.push({
-    "caption": "VAP Image Name",
-    "type": "list",
-    "tooltip": {
-        "text": "Select required <b>qcow2</b> VAP image name",
-        "minWidth": 270
-    },
-    "name": "image_name",
-    "required": true,
-    "values": "imageListPrepared"
 });
 
 return settings;
