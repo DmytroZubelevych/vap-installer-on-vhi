@@ -99,7 +99,6 @@ var settings = jps.settings.create;
 var fields = {};
 for (var i = 0, field; field = jps.settings.create.fields[i]; i++)
 fields[field.name] = field;
-var instTypeFields = fields["inst_type"].showIf;
 fields["ssh_key"].values = sshKeysPrepared;
 fields["ssh_key"].
 default = currentSSHKey;
