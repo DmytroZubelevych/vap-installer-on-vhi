@@ -100,8 +100,7 @@ var fields = {};
 for (var i = 0, field; field = jps.settings.create.fields[i]; i++)
 fields[field.name] = field;
 fields["ssh_key"].values = sshKeysPrepared;
-fields["ssh_key"].
-default = currentSSHKey;
+fields["ssh_key"].default = currentSSHKey;
 
 settings.fields.push([{
     "caption": "Installation type",
