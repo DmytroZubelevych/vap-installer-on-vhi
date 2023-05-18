@@ -392,6 +392,7 @@ settings.fields.push({
         "minWidth": 135
     },
     "name": "user_node_count",
+    "width": 109,
     "default": 1,
     "min": 0,
     "max": 5
