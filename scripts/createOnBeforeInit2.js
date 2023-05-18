@@ -100,17 +100,249 @@ var fields = {};
 for (var i = 0, field; field = jps.settings.create.fields[i]; i++)
 fields[field.name] = field;
 var instTypeFields = fields["inst_type"].showIf;
-instTypeFields.poc[0].items[0].values = infraFlavorListPrepared;
-instTypeFields.poc[0].items[3].values = userFlavorListPrepared;
-instTypeFields.sb[0].items[0].values = infraFlavorListPrepared;
-instTypeFields.sb[0].items[3].values = userFlavorListPrepared;
-instTypeFields.prod[0].items[0].values = infraFlavorListPrepared;
-instTypeFields.prod[0].items[3].values = userFlavorListPrepared;
-instTypeFields.high_prod[0].items[0].values = infraFlavorListPrepared;
-instTypeFields.high_prod[0].items[3].values = userFlavorListPrepared;
-fields["vap_stack_name"].value = vapStackName;
 fields["ssh_key"].values = sshKeysPrepared;
-fields["ssh_key"].default = currentSSHKey;
+fields["ssh_key"].
+default = currentSSHKey;
+
+settings.fields.push([{
+    "caption": "Installation type",
+    "type": "list",
+    "name": "inst_type",
+    "default": "poc",
+    "tooltip": {
+        "text": "Platform types based on the purpose:\n<ul>\n  <li><b>&#x2022; PoC</b> (Proof-of-Concept) - a platform used for feature demonstration or non-complex testing activities\n  <li><b>&#x2022; Sandbox</b> - non-production platform for testing purposes\n  <li><b>&#x2022; Production</b> - a public or private platform that is used for production purposes\n  <li><b>&#x2022; High-Performance Production</b> - the public cloud platform with extended performance capabilities for demanding end-users\n</ul>  \n",
+        "maxWidth": 750,
+        "minWidth": 750
+    },
+    "values": {
+        "poc": "PoC",
+        "sb": "Sandbox",
+        "prod": "Production",
+        "high_prod": "High Performance Production"
+    },
+    "showIf": {
+        "poc": [{
+            "type": "compositefield",
+            "caption": "RAM&CPU Infra",
+            "defaultMargins": "0 10 0 0",
+            "tooltip": {
+                "text": "<h2>PoC Installation Type</h2>Make sure the Flavor meets the requirements for <b>Infra</b> nodes. <a href='https://www.virtuozzo.com/application-platform-ops-docs/hardware-requirements-local-storage/' target='_blank'>Learn More</a><p></p> <img width='600' height='250' src='https://raw.githubusercontent.com/virtuozzo/vap-installer-on-vhi/master/images/poc-requirements.svg'>",
+                "tipParams": null,
+                "maxWidth": 830,
+                "minWidth": 300
+            },
+            "items": [{
+                "name": "infra_cpu_ram",
+                "type": "list",
+                "required": true,
+                "width": 122,
+                "values": "infraFlavorListPrepared"
+            }, {
+                "type": "displayfield",
+                "markup": "RAM&CPU User"
+            }, {
+                "type": "tooltip",
+                "text": "<h2>PoC Installation Type</h2>Make sure the Flavor meets the requirements for <b>User</b> nodes. <a href='https://www.virtuozzo.com/application-platform-ops-docs/hardware-requirements-local-storage/' target='_blank'>Learn More</a><p></p> <img width='600' height='250' src='https://raw.githubusercontent.com/virtuozzo/vap-installer-on-vhi/master/images/poc-requirements.svg'>",
+                "tipParams": null,
+                "maxWidth": 830,
+                "minWidth": 300
+            }, {
+                "name": "user_cpu_ram",
+                "type": "list",
+                "width": 122,
+                "required": true,
+                "values": "userFlavorListPrepared"
+            }]
+        }],
+        "sb": [{
+            "type": "compositefield",
+            "caption": "RAM&CPU Infra",
+            "defaultMargins": "0 10 0 0",
+            "tooltip": {
+                "text": "<h2>Sandbox Installation Type</h2>Make sure the Flavor meets the requirements for <b>Infra</b> nodes. <a href='https://www.virtuozzo.com/application-platform-ops-docs/hardware-requirements-local-storage/' target='_blank'>Learn More</a><p></p> <img width='600' height='250' src='https://raw.githubusercontent.com/virtuozzo/vap-installer-on-vhi/master/images/sandbox-requirements.svg'>",
+                "tipParams": null,
+                "maxWidth": 830,
+                "minWidth": 300
+            },
+            "items": [{
+                "name": "infra_cpu_ram",
+                "type": "list",
+                "required": true,
+                "width": 122,
+                "values": "infraFlavorListPrepared"
+            }, {
+                "type": "displayfield",
+                "markup": "RAM&CPU User"
+            }, {
+                "type": "tooltip",
+                "text": "<h2>Sandbox Installation Type</h2>Make sure the Flavor meets the requirements for <b>Infra</b> nodes. <a href='https://www.virtuozzo.com/application-platform-ops-docs/hardware-requirements-local-storage/' target='_blank'>Learn More</a><p></p> <img width='600' height='250' src='https://raw.githubusercontent.com/virtuozzo/vap-installer-on-vhi/master/images/sandbox-requirements.svg'>",
+                "tipParams": null,
+                "maxWidth": 830,
+                "minWidth": 300
+            }, {
+                "name": "user_cpu_ram",
+                "type": "list",
+                "width": 122,
+                "required": true,
+                "values": "userFlavorListPrepared"
+            }]
+        }],
+        "prod": [{
+            "type": "compositefield",
+            "caption": "RAM&CPU Infra",
+            "defaultMargins": "0 10 0 0",
+            "tooltip": {
+                "text": " <h2>Production Installation Type</h2>Make sure the Flavor meets the requirements for <b>Infra</b> nodes. <a href='https://www.virtuozzo.com/application-platform-ops-docs/hardware-requirements-local-storage/' target='_blank'>Learn More</a><p></p> <img width='600' height='250' src='https://raw.githubusercontent.com/virtuozzo/vap-installer-on-vhi/master/images/performance-requirements.svg'>",
+                "tipParams": null,
+                "maxWidth": 830,
+                "minWidth": 300
+            },
+            "items": [{
+                "name": "infra_cpu_ram",
+                "type": "list",
+                "required": true,
+                "width": 122,
+                "values": "infraFlavorListPrepared"
+            }, {
+                "type": "displayfield",
+                "markup": "RAM&CPU User"
+            }, {
+                "type": "tooltip",
+                "text": " <h2>Production Installation Type</h2>Make sure the Flavor meets the requirements for <b>Infra</b> nodes. <a href='https://www.virtuozzo.com/application-platform-ops-docs/hardware-requirements-local-storage/' target='_blank'>Learn More</a><p></p> <img width='600' height='250' src='https://raw.githubusercontent.com/virtuozzo/vap-installer-on-vhi/master/images/performance-requirements.svg'>",
+                "tipParams": null,
+                "maxWidth": 830,
+                "minWidth": 300
+            }, {
+                "name": "user_cpu_ram",
+                "type": "list",
+                "width": 122,
+                "required": true,
+                "values": "userFlavorListPrepared"
+            }]
+        }],
+        "high_prod": [{
+            "type": "compositefield",
+            "caption": "RAM&CPU Infra",
+            "defaultMargins": "0 10 0 0",
+            "tooltip": {
+                "text": "<h2>High Performance Production Installation Type</h2>Make sure the Flavor meets the requirements for <b>Infra</b> nodes. <a href='https://www.virtuozzo.com/application-platform-ops-docs/hardware-requirements-local-storage/' target='_blank'>Learn More</a><p></p> <img width='600' height='250' src='https://raw.githubusercontent.com/virtuozzo/vap-installer-on-vhi/master/images/high-performance-requirements.svg'>",
+                "tipParams": null,
+                "maxWidth": 830,
+                "minWidth": 300
+            },
+            "items": [{
+                "name": "infra_cpu_ram",
+                "type": "list",
+                "required": true,
+                "width": 122,
+                "values": "infraFlavorListPrepared"
+            }, {
+                "type": "displayfield",
+                "markup": "RAM&CPU User"
+            }, {
+                "type": "tooltip",
+                "text": "<h2>High Performance Production Installation Type</h2>Make sure the Flavor meets the requirements for <b>User</b> nodes. <a href='https://www.virtuozzo.com/application-platform-ops-docs/hardware-requirements-local-storage/' target='_blank'>Learn More</a><p></p> <img width='600' height='250' src='https://raw.githubusercontent.com/virtuozzo/vap-installer-on-vhi/master/images/high-performance-requirements.svg'>",
+                "tipParams": null,
+                "maxWidth": 830,
+                "minWidth": 300
+            }, {
+                "name": "user_cpu_ram",
+                "type": "list",
+                "width": 122,
+                "required": true,
+                "values": "userFlavorListPrepared"
+            }]
+        }]
+    }
+}, {
+    "caption": "VAP Project Name",
+    "type": "string",
+    "tooltip": {
+        "text": "VAP Project Name",
+        "minWidth": 130
+    },
+    "name": "vap_stack_name",
+    "required": true,
+    "value": "vapStackName"
+}, {
+    "type": "compositefield",
+    "caption": "Infra Storage,GB",
+    "defaultMargins": "0 12 0 0",
+    "tooltip": {
+        "text": "Storage size for '<b>/</b>', '<b>/vz</b>' and '<b>swap</b>' partition for Infra nodes.<br>\nSwap size depends on RAM:\n<ul>\n  <li><b>&#x2022;</b> 4-8 GB - the swap size is equal to the RAM size\n  <li><b>&#x2022;</b> 8-64 GB - the swap size is half the RAM size\n  <li><b>&#x2022;</b> 64+ GB - the swap size is 32 GB\n</ul>\n",
+        "minWidth": 370
+    },
+    "items": [{
+        "type": "spinner",
+        "name": "infra_os_storage_size",
+        "min": 100,
+        "max": 2000,
+        "width": 109
+    }, {
+        "type": "displayfield",
+        "markup": "/",
+        "cls": "x-form-item-label",
+        "width": 10
+    }, {
+        "type": "spinner",
+        "name": "infra_vz_storage_size",
+        "min": 100,
+        "max": 5000,
+        "default": 800,
+        "width": 108
+    }, {
+        "type": "displayfield",
+        "markup": "/",
+        "cls": "x-form-item-label",
+        "width": 10
+    }, {
+        "type": "spinner",
+        "name": "infra_swap_storage_size",
+        "min": 4,
+        "max": 512,
+        "default": 32,
+        "width": 109
+    }]
+}, {
+    "type": "compositefield",
+    "caption": "User Storage, GB",
+    "defaultMargins": "0 12 0 0",
+    "tooltip": {
+        "text": "Storage size for '<b>/</b>', '<b>/vz</b>' and '<b>swap</b>' partition for User nodes.<br>\nSwap size depends on RAM:\n<ul>\n  <li><b>&#x2022;</b> 4-8 GB - the swap size is equal to the RAM size\n  <li><b>&#x2022;</b> 8-64 GB - the swap size is half the RAM size\n  <li><b>&#x2022;</b> 64+ GB - the swap size is 32 GB\n</ul>\n",
+        "minWidth": 370
+    },
+    "items": [{
+        "type": "spinner",
+        "name": "user_os_storage_size",
+        "min": 100,
+        "max": 2000,
+        "width": 109
+    }, {
+        "type": "displayfield",
+        "markup": "/",
+        "cls": "x-form-item-label",
+        "width": 10
+    }, {
+        "type": "spinner",
+        "name": "user_vz_storage_size",
+        "min": 100,
+        "max": 5000,
+        "default": 800,
+        "width": 108
+    }, {
+        "type": "displayfield",
+        "markup": "/",
+        "cls": "x-form-item-label",
+        "width": 10
+    }, {
+        "type": "spinner",
+        "name": "user_swap_storage_size",
+        "min": 4,
+        "max": 512,
+        "default": 32,
+        "width": 109
+    }]
+}]);
 
 settings.fields.push({
     "type": "compositefield",
