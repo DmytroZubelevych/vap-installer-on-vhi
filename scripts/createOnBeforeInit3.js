@@ -407,7 +407,7 @@ settings.fields.push({
     },
     "name": "subnet",
     "required": true,
-    "values": "subnetListPrepared"
+    "values": subnetListPrepared
 });
 
 settings.fields.push({
@@ -419,7 +419,7 @@ settings.fields.push({
     },
     "name": "image_name",
     "required": true,
-    "values": "imageListPrepared"
+    "values": imageListPrepared
 });
 
 return settings;
