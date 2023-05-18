@@ -102,7 +102,7 @@ fields[field.name] = field;
 fields["ssh_key"].values = sshKeysPrepared;
 fields["ssh_key"].default = currentSSHKey;
 
-settings.fields.push([{
+settings.fields.push({
     "caption": "Installation type",
     "type": "list",
     "name": "inst_type",
@@ -252,7 +252,9 @@ settings.fields.push([{
             }]
         }]
     }
-}, {
+});
+
+settings.fields.push({
     "caption": "VAP Project Name",
     "type": "string",
     "tooltip": {
@@ -262,7 +264,9 @@ settings.fields.push([{
     "name": "vap_stack_name",
     "required": true,
     "value": "vapStackName"
-}, {
+});
+            
+settings.fields.push({
     "type": "compositefield",
     "caption": "Infra Storage,GB",
     "defaultMargins": "0 12 0 0",
@@ -301,7 +305,9 @@ settings.fields.push([{
         "default": 32,
         "width": 109
     }]
-}, {
+});          
+                      
+settings.fields.push({
     "type": "compositefield",
     "caption": "User Storage, GB",
     "defaultMargins": "0 12 0 0",
@@ -340,7 +346,7 @@ settings.fields.push([{
         "default": 32,
         "width": 109
     }]
-}]);
+});
 
 settings.fields.push({
     "type": "compositefield",
