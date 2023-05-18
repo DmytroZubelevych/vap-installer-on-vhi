@@ -134,7 +134,7 @@ settings.fields.push({
                 "type": "list",
                 "required": true,
                 "width": 122,
-                "values": "infraFlavorListPrepared"
+                "values": infraFlavorListPrepared
             }, {
                 "type": "displayfield",
                 "markup": "RAM&CPU User"
@@ -149,7 +149,7 @@ settings.fields.push({
                 "type": "list",
                 "width": 122,
                 "required": true,
-                "values": "userFlavorListPrepared"
+                "values": userFlavorListPrepared
             }]
         }],
         "sb": [{
@@ -167,7 +167,7 @@ settings.fields.push({
                 "type": "list",
                 "required": true,
                 "width": 122,
-                "values": "infraFlavorListPrepared"
+                "values": infraFlavorListPrepared
             }, {
                 "type": "displayfield",
                 "markup": "RAM&CPU User"
@@ -182,7 +182,7 @@ settings.fields.push({
                 "type": "list",
                 "width": 122,
                 "required": true,
-                "values": "userFlavorListPrepared"
+                "values": userFlavorListPrepared
             }]
         }],
         "prod": [{
@@ -200,7 +200,7 @@ settings.fields.push({
                 "type": "list",
                 "required": true,
                 "width": 122,
-                "values": "infraFlavorListPrepared"
+                "values": infraFlavorListPrepared
             }, {
                 "type": "displayfield",
                 "markup": "RAM&CPU User"
@@ -215,7 +215,7 @@ settings.fields.push({
                 "type": "list",
                 "width": 122,
                 "required": true,
-                "values": "userFlavorListPrepared"
+                "values": userFlavorListPrepared
             }]
         }],
         "high_prod": [{
@@ -233,7 +233,7 @@ settings.fields.push({
                 "type": "list",
                 "required": true,
                 "width": 122,
-                "values": "infraFlavorListPrepared"
+                "values": infraFlavorListPrepared
             }, {
                 "type": "displayfield",
                 "markup": "RAM&CPU User"
@@ -248,7 +248,7 @@ settings.fields.push({
                 "type": "list",
                 "width": 122,
                 "required": true,
-                "values": "userFlavorListPrepared"
+                "values": userFlavorListPrepared
             }]
         }]
     }
