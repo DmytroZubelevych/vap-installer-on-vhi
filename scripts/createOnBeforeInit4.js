@@ -98,7 +98,7 @@ function prepareImageList(values) {
 var settings = jps.settings.create;
 var fields = {};
 for (var i = 0, field; field = jps.settings.create.fields[i]; i++)
-fields[field.name] = field;
+  fields[field.name] = field;
 var instTypeFields = fields["inst_type"].showIf;
 instTypeFields.poc[0].values = infraFlavorListPrepared;
 instTypeFields.poc[1].values = userFlavorListPrepared;
@@ -109,69 +109,54 @@ instTypeFields.prod[1].values = userFlavorListPrepared;
 instTypeFields.high_prod[0].values = infraFlavorListPrepared;
 instTypeFields.high_prod[1].values = userFlavorListPrepared;
 fields["vap_stack_name"].value = vapStackName;
+fields["subnet"].values = subnetListPrepared;
+fields["image_name"].values = imageListPrepared;
 fields["ssh_key"].values = sshKeysPrepared;
-fields["ssh_key"].
-default = currentSSHKey;
+fields["ssh_key"].default = currentSSHKey;
 
-settings.fields.push({
-    "type": "compositefield",
-    "caption": "Storage Policies",
-    "defaultMargins": "0 12 0 0",
-    "tooltip": {
-        "text": "Storage policies for '<b>root</b>', '<b>infra</b>' and '<b>user</b>' nodes.<br>\n",
-        "minWidth": 370
-    },
-    "items": [{
-        "type": "list",
-        "name": "root_storage_policy",
-        "values": storagePoliciesListPrepared,
-        "width": 109
-    }, {
-        "type": "displayfield",
-        "markup": "/",
-        "cls": "x-form-item-label",
-        "width": 10
-    }, {
-        "type": "list",
-        "name": "infra_storage_policy",
-        "values": storagePoliciesListPrepared,
-        "width": 108
-    }, {
-        "type": "displayfield",
-        "markup": "/",
-        "cls": "x-form-item-label",
-        "width": 10
-    }, {
-        "type": "list",
-        "name": "user_storage_policy",
-        "values": storagePoliciesListPrepared,
-        "width": 109
-    }]
-});
-
-settings.fields.push({
-    "caption": "User Node Count",
-    "type": "spinner",
-    "tooltip": {
-        "text": "User Node Count to be created on the IaaS where the Infra nodes are.",
-        "minWidth": 135
-    },
-    "name": "user_node_count",
-    "default": 1,
-    "min": 0,
-    "max": 5
-});
-
-settings.fields.push({
-    "caption": "VHI Public Subnet",
+settings.fields.push([
+  {
+    "caption": "Storage Policy Root",
     "type": "list",
     "tooltip": {
-        "text": "Select required VHI cluster subnet",
-        "minWidth": 240
+      "text": "A storage policy is a group of parameters that define how to store VM volumes: a tier, a failure domain, and a redundancy mode. A storage policy can also be used to limit the bandwidth or IOPS of the volume.\nYou may check storage policy details with VHI cluster admin. <a href='https://docs.virtuozzo.com/virtuozzo_hybrid_infrastructure_5_0_admins_guide/index.html#managing-storage-policies.html' target='_blank'>Learn More</a><p></p>\n"
     },
-    "name": "subnet",
+    "name": "storage_policy_root",
     "required": true,
-    "values": "subnetListPrepared"
-});
+    "values": "storagePoliciesListPrepared"
+  },
+  {
+    "type": "compositefield",
+    "caption": "Storage Policy: Infra\n",
+    "defaultMargins": "6 10 0 0",
+    "tooltip": {
+      "text": "A storage policy is a group of parameters that define how to store VM volumes: a tier, a failure domain, and a redundancy mode. A storage policy can also be used to limit the bandwidth or IOPS of the volume.\nYou may check storage policy details with VHI cluster admin. <a href='https://docs.virtuozzo.com/virtuozzo_hybrid_infrastructure_5_0_admins_guide/index.html#managing-storage-policies.html' target='_blank'>Learn More</a><p></p>\n"
+    },
+    "items": [
+      {
+        "name": "storage_policy_infra",
+        "type": "list",
+        "required": true,
+        "width": 182,
+        "values": "storagePoliciesListPrepared"
+      },
+      {
+        "type": "displayfield",
+        "markup": "User"
+      },
+      {
+        "type": "tooltip",
+        "text": "A storage policy is a group of parameters that define how to store VM volumes: a tier, a failure domain, and a redundancy mode. A storage policy can also be used to limit the bandwidth or IOPS of the volume.\nYou may check storage policy details with VHI cluster admin. <a href='https://docs.virtuozzo.com/virtuozzo_hybrid_infrastructure_5_0_admins_guide/index.html#managing-storage-policies.html' target='_blank'>Learn More</a><p></p>\n"
+      },
+      {
+        "name": "storage_policy_user",
+        "type": "list",
+        "width": 182,
+        "required": true,
+        "values": "storagePoliciesListPrepared"
+      }
+    ]
+  }
+]);
 
 return settings;
