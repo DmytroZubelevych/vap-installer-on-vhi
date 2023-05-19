@@ -114,8 +114,7 @@ fields["image_name"].values = imageListPrepared;
 fields["ssh_key"].values = sshKeysPrepared;
 fields["ssh_key"].default = currentSSHKey;
 
-settings.fields.push([
-  {
+settings.fields.push({
     "caption": "Storage Policy Root",
     "type": "list",
     "tooltip": {
@@ -124,7 +123,9 @@ settings.fields.push([
     "name": "storage_policy_root",
     "required": true,
     "values": "storagePoliciesListPrepared"
-  },
+  });
+
+settings.fields.push(
   {
     "type": "compositefield",
     "caption": "Storage Policy: Infra\n",
@@ -157,6 +158,6 @@ settings.fields.push([
       }
     ]
   }
-]);
+);
 
 return settings;
