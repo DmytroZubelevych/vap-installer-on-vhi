@@ -122,7 +122,7 @@ settings.fields.push({
     },
     "name": "storage_policy_root",
     "required": true,
-    "values": "storagePoliciesListPrepared"
+    "values": storagePoliciesListPrepared
   });
 
 settings.fields.push(
@@ -139,7 +139,7 @@ settings.fields.push(
         "type": "list",
         "required": true,
         "width": 182,
-        "values": "storagePoliciesListPrepared"
+        "values": storagePoliciesListPrepared
       },
       {
         "type": "displayfield",
@@ -154,7 +154,7 @@ settings.fields.push(
         "type": "list",
         "width": 182,
         "required": true,
-        "values": "storagePoliciesListPrepared"
+        "values": storagePoliciesListPrepared
       }
     ]
   }
