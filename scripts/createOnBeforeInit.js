@@ -138,7 +138,7 @@ settings.fields.push(
         "name": "storage_policy_infra",
         "type": "list",
         "required": true,
-        "width": 156,
+        "width": 158,
         "values": storagePoliciesListPrepared
       },
       {
@@ -152,7 +152,7 @@ settings.fields.push(
       {
         "name": "storage_policy_user",
         "type": "list",
-        "width": 156,
+        "width": 158,
         "required": true,
         "values": storagePoliciesListPrepared
       }
