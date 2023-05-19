@@ -255,6 +255,7 @@ settings:
           name: infra_os_storage_size
           min: 100
           max: 2000
+          width: 109
         - type: displayfield
           markup: "/"
           cls: x-form-item-label
@@ -264,6 +265,7 @@ settings:
           min: 100
           max: 5000
           default: 800
+          width: 108
         - type: displayfield
           markup: "/"
           cls: x-form-item-label
@@ -273,6 +275,7 @@ settings:
           min: 4
           max: 512
           default: 32
+          width: 109
 
      - type: compositefield
        caption: User Storage, GB
@@ -292,6 +295,7 @@ settings:
           name: user_os_storage_size
           min: 100
           max: 2000
+          width: 109
         - type: displayfield
           markup: "/"
           cls: x-form-item-label
@@ -301,6 +305,7 @@ settings:
           min: 100
           max: 5000
           default: 800
+          width: 108
         - type: displayfield
           markup: "/"
           cls: x-form-item-labStorage Policy el
@@ -310,6 +315,7 @@ settings:
           min: 4
           max: 512
           default: 32
+          width: 109
      - caption: VHI Public Subnet
        type: list
        tooltip:
