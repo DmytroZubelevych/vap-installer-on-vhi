@@ -128,6 +128,7 @@ settings:
             default: 2
             min: 0
             max: 5
+            width: 108
             tooltip:
               text: "User Node Count to be created on the IaaS where the Infra nodes are."
           - caption: RAM&CPU Infra
@@ -157,6 +158,7 @@ settings:
             default: 1
             min: 0
             max: 5
+            width: 108
             tooltip:
               text: "User Node Count to be created on the IaaS where the Infra nodes are."
           - caption: RAM&CPU Infra
@@ -186,6 +188,7 @@ settings:
             default: 3
             min: 0
             max: 5
+            width: 108
             tooltip:
               text: "User Node Count to be created on the IaaS where the Infra nodes are."
           - caption: RAM&CPU Infra
@@ -215,6 +218,7 @@ settings:
             default: 3
             min: 0
             max: 5
+            width: 108
             tooltip:
               text: "User Node Count to be created on the IaaS where the Infra nodes are."
           - name: infra_cpu_ram
@@ -295,7 +299,7 @@ settings:
           name: user_os_storage_size
           min: 100
           max: 2000
-          width: 109
+          width: 108
         - type: displayfield
           markup: "/"
           cls: x-form-item-label
@@ -315,7 +319,7 @@ settings:
           min: 4
           max: 512
           default: 32
-          width: 109
+          width: 108
      - caption: VHI Public Subnet
        type: list
        tooltip:
