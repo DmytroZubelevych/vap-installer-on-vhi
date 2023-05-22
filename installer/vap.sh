@@ -14,7 +14,7 @@ USER_FLAVORS_JSON="$BASE_DIR/userFlavors.json"
 IMAGES_JSON="$BASE_DIR/images.json"
 SUBNETS_JSON="$BASE_DIR/subnets.json"
 KEYPAIRS_JSON="$BASE_DIR/keypairs.json"
-VOLUME_TYPES_JSON="$BASE_DIR/volumeTypes.json"
+VOLUME_TYPES_JSON="$BASE_DIR/storagePolicies.json"
 
 MIN_INFRA_VCPU=2
 MIN_INFRA_RAM=15400
@@ -337,7 +337,7 @@ getStoragePolicies(){
     seperator=---------------------------------------------------------------------------------------------------
     rows="%-5s| %-50s| %s\n"
     TableWidth=100
-    echo -e "\n\nVHI Volume Types List"
+    echo -e "\n\nVHI Storage Policies List"
     printf "%.${TableWidth}s\n" "$seperator"
     printf "%-5s| %-50s| %s\n" ID Name "Is Public"
     printf "%.${TableWidth}s\n" "$seperator"
