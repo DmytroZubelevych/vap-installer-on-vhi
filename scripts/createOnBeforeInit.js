@@ -120,7 +120,7 @@ settings.fields.push({
     "tooltip": {
       "text": "A storage policy is a group of parameters that define how to store VM volumes: a tier, a failure domain, and a redundancy mode. A storage policy can also be used to limit the bandwidth or IOPS of the volume.\nYou may check storage policy details with VHI cluster admin. <a href='https://docs.virtuozzo.com/virtuozzo_hybrid_infrastructure_5_0_admins_guide/index.html#managing-storage-policies.html' target='_blank'>Learn More</a><p></p>\n"
     },
-    "name": "storage_policy_root",
+    "name": "root_storage_policy",
     "required": true,
     "values": storagePoliciesListPrepared
   });
@@ -135,7 +135,7 @@ settings.fields.push(
     },
     "items": [
       {
-        "name": "storage_policy_infra",
+        "name": "infra_storage_policy",
         "type": "list",
         "required": true,
         "width": 157,
@@ -150,7 +150,7 @@ settings.fields.push(
         "text": "A storage policy is a group of parameters that define how to store VM volumes: a tier, a failure domain, and a redundancy mode. A storage policy can also be used to limit the bandwidth or IOPS of the volume.\nYou may check storage policy details with VHI cluster admin. <a href='https://docs.virtuozzo.com/virtuozzo_hybrid_infrastructure_5_0_admins_guide/index.html#managing-storage-policies.html' target='_blank'>Learn More</a><p></p>\n"
       },
       {
-        "name": "storage_policy_user",
+        "name": "user_storage_policy",
         "type": "list",
         "width": 157,
         "required": true,
