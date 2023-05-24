@@ -1,6 +1,6 @@
 var infraFlavorList = getJsonFromFile("infraFlavors.json");
 var infraFlavorListPrepared = prepareFlavorsList(JSON.parse(infraFlavorList));
-var storagePoliciesList = getJsonFromFile("volumeTypes.json");
+var storagePoliciesList = getJsonFromFile("storagePolicies.json");
 var storagePoliciesListPrepared = prepareStoragePoliciesList(JSON.parse(storagePoliciesList));
 var userFlavorList = getJsonFromFile("userFlavors.json");
 var userFlavorListPrepared = prepareFlavorsList(JSON.parse(userFlavorList));
