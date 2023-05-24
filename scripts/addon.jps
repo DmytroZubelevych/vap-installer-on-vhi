@@ -61,7 +61,7 @@ settings:
         caption: VAP Project Domain 
         tooltip: "<span>Come up with VAP Project Domain Name</span>"
         required: true
-
+        
       - type: toggle
         name: ssh_key_check
         caption: New SSH Key
