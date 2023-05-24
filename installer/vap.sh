@@ -607,9 +607,9 @@ create(){
   INFRA_FLAVOR=$(_getValueById $INFRA_FLAVOR "Value" "infraFlavors.json")
   USER_FLAVOR=$(_getValueById $USER_FLAVOR "Value" "userFlavors.json")
   
-  ROOT_STORAGE_POLICY=$(_getValueById $ROOT_STORAGE_POLICY "ID" "volumeTypes.json")
-  INFRA_STORAGE_POLICY=$(_getValueById $INFRA_STORAGE_POLICY "ID" "volumeTypes.json")
-  USER_STORAGE_POLICY=$(_getValueById $USER_STORAGE_POLICY "ID" "volumeTypes.json")
+  ROOT_STORAGE_POLICY=$(_getValueById $ROOT_STORAGE_POLICY "ID" ${VOLUME_TYPES_JSON})
+  INFRA_STORAGE_POLICY=$(_getValueById $INFRA_STORAGE_POLICY "ID" ${VOLUME_TYPES_JSON})
+  USER_STORAGE_POLICY=$(_getValueById $USER_STORAGE_POLICY "ID" ${VOLUME_TYPES_JSON})
 
   local createcmd="${OPENSTACK} stack create ${VAP_STACK_NAME} -t VAP.yaml"
   createcmd+=" --parameter image=${IMAGE}"
