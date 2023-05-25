@@ -636,6 +636,8 @@ create(){
   createcmd+=" --parameter key_name=${KEY_NAME}"
   createcmd+=" --wait"
 
+  echo ${createcmd} >> /var/www/webroot/createcmd
+
   local checkstackcmd="openstack stack show ${VAP_STACK_NAME}"
 
   local result="0";
