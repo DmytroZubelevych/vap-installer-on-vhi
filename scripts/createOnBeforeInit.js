@@ -1,3 +1,7 @@
+var resp = jelastic.env.control.ExecCmdById('${env.envName}', session, '${nodes.cp.master.id}', toJSON([{
+    "command": "bash /var/www/webroot/reconfigure.sh"
+}]), true);
+if (resp.result != 0) return resp;
 var infraFlavorList = getJsonFromFile("infraFlavors.json");
 var infraFlavorListPrepared = prepareFlavorsList(JSON.parse(infraFlavorList));
 var storagePoliciesList = getJsonFromFile("storagePolicies.json");
