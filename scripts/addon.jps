@@ -405,6 +405,7 @@ actions:
       wget ${baseUrl}/installer/infra.sh -O ${globals.vap_dir}/infra.sh;
       wget ${baseUrl}/installer/user.sh -O ${globals.vap_dir}/user.sh;
       wget ${baseUrl}/installer/vap.sh -O ${globals.vap_dir}/vap.sh;
+      wget ${baseUrl}/installer/reconfigure.sh -O ${globals.vap_dir}/reconfigure.sh;
 
   installOSclient: 
     - cmd[cp]: |- 
