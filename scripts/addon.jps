@@ -150,6 +150,18 @@ settings:
               tipParams:
               maxWidth: 830
               minWidth: 300
+          - caption: Uploader & Docker Cache Size
+            name: upload_docker_cache_size
+            type: spinner
+            default: 300
+            min: 1
+            max: 3000
+            width: 108
+            tooltip:
+              text: Specify total size for Uploader storage and Docker templates cache storage. [Learn more](https://www.virtuozzo.com/application-platform-ops-)docs/hardware-requirements-local-storage/#uploader-storage
+              tipParams:
+              maxWidth: 830
+              minWidth: 300
          sb:
           - caption: User Node Count
             name: user_node_count
@@ -177,6 +189,18 @@ settings:
             type: list
             tooltip: 
               text: "<h2>Sandbox Installation Type</h2>Make sure the Flavor meets the requirements for <b>User</b> nodes. <a href='https://www.virtuozzo.com/application-platform-ops-docs/hardware-requirements-local-storage/' target='_blank'>Learn More</a><p></p> <img width='600' height='250' src='https://raw.githubusercontent.com/virtuozzo/vap-installer-on-vhi/master/images/sandbox-requirements.svg'>"
+              tipParams:
+              maxWidth: 830
+              minWidth: 300
+          - caption: Uploader & Docker Cache Size
+            name: upload_docker_cache_size
+            type: spinner
+            default: 300
+            min: 1
+            max: 3000
+            width: 108
+            tooltip:
+              text: Specify total size for Uploader storage and Docker templates cache storage. [Learn more](https://www.virtuozzo.com/application-platform-ops-)docs/hardware-requirements-local-storage/#uploader-storage
               tipParams:
               maxWidth: 830
               minWidth: 300
@@ -210,6 +234,18 @@ settings:
               tipParams:
               maxWidth: 830
               minWidth: 300
+          - caption: Uploader & Docker Cache Size
+            name: upload_docker_cache_size
+            type: spinner
+            default: 1000
+            min: 1
+            max: 3000
+            width: 108
+            tooltip:
+              text: Specify total size for Uploader storage and Docker templates cache storage. [Learn more](https://www.virtuozzo.com/application-platform-ops-)docs/hardware-requirements-local-storage/#uploader-storage
+              tipParams:
+              maxWidth: 830
+              minWidth: 300
          high_prod:
           - caption: User Node Count
             name: user_node_count
@@ -237,6 +273,18 @@ settings:
             values: userFlavorListPrepared      
             tooltip:
               text: "<h2>High Performance Production Installation Type</h2>Make sure the Flavor meets the requirements for <b>User</b> nodes. <a href='https://www.virtuozzo.com/application-platform-ops-docs/hardware-requirements-local-storage/' target='_blank'>Learn More</a><p></p> <img width='600' height='250' src='https://raw.githubusercontent.com/virtuozzo/vap-installer-on-vhi/master/images/high-performance-requirements.svg'>"
+              tipParams:
+              maxWidth: 830
+              minWidth: 300
+          - caption: Uploader & Docker Cache Size
+            name: upload_docker_cache_size
+            type: spinner
+            default: 2000
+            min: 1
+            max: 3000
+            width: 108
+            tooltip:
+              text: Specify total size for Uploader storage and Docker templates cache storage. [Learn more](https://www.virtuozzo.com/application-platform-ops-)docs/hardware-requirements-local-storage/#uploader-storage
               tipParams:
               maxWidth: 830
               minWidth: 300
