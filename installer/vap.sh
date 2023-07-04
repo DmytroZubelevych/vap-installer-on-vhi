@@ -367,6 +367,7 @@ responseValidate(){
   errorsArray+="HTTP 404:API version is incorrect,"
   errorsArray+="Name or service not known:API endpoint URL is invalid"
   errorsArray+="could not be found. (HTTP 400)"
+  errorsArray+="ConflictException: 409: Client Error"
   
   while read -d, -r pair; do
     IFS=':' read -r key val <<<"$pair"
