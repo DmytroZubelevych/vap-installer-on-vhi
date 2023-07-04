@@ -150,7 +150,7 @@ settings:
               tipParams:
               maxWidth: 830
               minWidth: 300
-          - caption: Uploader & Docker Cache Size
+          - caption: Uploader & Docker Cache Size,GB
             name: upload_docker_cache_size
             type: spinner
             default: 300
@@ -192,7 +192,7 @@ settings:
               tipParams:
               maxWidth: 830
               minWidth: 300
-          - caption: Uploader & Docker Cache Size
+          - caption: Uploader & Docker Cache Size,GB
             name: upload_docker_cache_size
             type: spinner
             default: 300
@@ -234,7 +234,7 @@ settings:
               tipParams:
               maxWidth: 830
               minWidth: 300
-          - caption: Uploader & Docker Cache Size
+          - caption: Uploader & Docker Cache Size,GB
             name: upload_docker_cache_size
             type: spinner
             default: 1000
@@ -276,7 +276,7 @@ settings:
               tipParams:
               maxWidth: 830
               minWidth: 300
-          - caption: Uploader & Docker Cache Size
+          - caption: Uploader & Docker Cache Size,GB
             name: upload_docker_cache_size
             type: spinner
             default: 2000
