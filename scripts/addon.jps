@@ -158,7 +158,7 @@ settings:
             max: 3000
             width: 108
             tooltip:
-              text: Specify total size for Uploader storage and Docker templates cache storage. [Learn more](https://www.virtuozzo.com/application-platform-ops-)docs/hardware-requirements-local-storage/#uploader-storage
+              text: "Specify total size for Uploader storage and Docker templates cache storage.<a href='https://www.virtuozzo.com/application-platform-ops-docs/hardware-requirements-local-storage/#uploader-storage' target='_blank'>Learn More</a>"
               tipParams:
               maxWidth: 830
               minWidth: 300
@@ -200,7 +200,7 @@ settings:
             max: 3000
             width: 108
             tooltip:
-              text: Specify total size for Uploader storage and Docker templates cache storage. [Learn more](https://www.virtuozzo.com/application-platform-ops-)docs/hardware-requirements-local-storage/#uploader-storage
+              text: "Specify total size for Uploader storage and Docker templates cache storage.<a href='https://www.virtuozzo.com/application-platform-ops-docs/hardware-requirements-local-storage/#uploader-storage' target='_blank'>Learn More</a>"
               tipParams:
               maxWidth: 830
               minWidth: 300
@@ -242,7 +242,7 @@ settings:
             max: 3000
             width: 108
             tooltip:
-              text: Specify total size for Uploader storage and Docker templates cache storage. [Learn more](https://www.virtuozzo.com/application-platform-ops-)docs/hardware-requirements-local-storage/#uploader-storage
+              text: "Specify total size for Uploader storage and Docker templates cache storage.<a href='https://www.virtuozzo.com/application-platform-ops-docs/hardware-requirements-local-storage/#uploader-storage' target='_blank'>Learn More</a>"
               tipParams:
               maxWidth: 830
               minWidth: 300
@@ -284,7 +284,7 @@ settings:
             max: 3000
             width: 108
             tooltip:
-              text: Specify total size for Uploader storage and Docker templates cache storage. [Learn more](https://www.virtuozzo.com/application-platform-ops-)docs/hardware-requirements-local-storage/#uploader-storage
+              text: "Specify total size for Uploader storage and Docker templates cache storage.<a href='https://www.virtuozzo.com/application-platform-ops-docs/hardware-requirements-local-storage/#uploader-storage' target='_blank'>Learn More</a>"
               tipParams:
               maxWidth: 830
               minWidth: 300
