@@ -15,3 +15,8 @@ onInstall:
     user: root
   - install: /scripts/addon.jps?_r=${fn.random}
     nodeGroup: cp
+  - cmd[cp]: |-
+      for i in flavors.json images.json infraFlavors.json keypairs.json storagePolicies.json subnets.json userFlavors.json; do
+          echo '{}' > /var/www/webroot/${i};
+      done
+    user: root
