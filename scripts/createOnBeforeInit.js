@@ -161,6 +161,12 @@ settings.fields.push(
         "values": storagePoliciesListPrepared
       }
     ]
+  },
+  {
+     "name": "vap_platform_data_storage_policy",
+     "type": "list",
+     "required": true,
+     "values": storagePoliciesListPrepared
   }
 );
 
