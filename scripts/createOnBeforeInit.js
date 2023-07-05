@@ -164,9 +164,13 @@ settings.fields.push(
   },
   {
      "name": "vap_platform_data_storage_policy",
+     "caption": "Storage policy: VAP Platform Data",
      "type": "list",
      "required": true,
-     "values": storagePoliciesListPrepared
+     "values": storagePoliciesListPrepared,
+     "tooltip": {
+       "text": "A storage policy is a group of parameters that define how to store VM volumes: a tier, a failure domain, and a redundancy mode. A storage policy can also be used to limit the bandwidth or IOPS of the volume.\nYou may check storage policy details with VHI cluster admin. <a href='https://docs.virtuozzo.com/virtuozzo_hybrid_infrastructure_5_0_admins_guide/index.html#managing-storage-policies.html' target='_blank'>Learn More</a><p></p>\n"
+     },
   }
 );
 
