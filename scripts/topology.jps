@@ -19,4 +19,3 @@ onInstall:
       for i in flavors.json images.json infraFlavors.json keypairs.json storagePolicies.json subnets.json userFlavors.json; do
           echo '{}' > /var/www/webroot/${i};
       done
-      touch /var/www/webroot/.vapenv
