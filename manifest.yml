@@ -39,3 +39,4 @@ onInstall:
       displayName: ${settings.displayName}
       envGroups: ${response.envGroups}
       ownerUid: ${settings.ownerUid}
+      baseUrl: ${baseUrl}
