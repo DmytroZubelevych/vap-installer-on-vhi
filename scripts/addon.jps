@@ -13,6 +13,7 @@ globals:
   vap_dir: /var/www/webroot
   vap_settings: /var/www/webroot/.vapenv
   openstack: /opt/jelastic-python311/bin/openstack
+  installerBaseUrl: ${settings.installerBaseUrl}
 
 settings:
   configure:
@@ -447,12 +448,12 @@ actions:
 
   getScripts:
     cmd[cp]: |-
-      wget ${settings.installerBaseUrl}/installer/VAP.yaml -O ${globals.vap_dir}/VAP.yaml;
-      wget ${settings.installerBaseUrl}/installer/VAP_user.yaml -O ${globals.vap_dir}/VAP_user.yaml;
-      wget ${settings.installerBaseUrl}/installer/infra.sh -O ${globals.vap_dir}/infra.sh;
-      wget ${settings.installerBaseUrl}/installer/user.sh -O ${globals.vap_dir}/user.sh;
-      wget ${settings.installerBaseUrl}/installer/vap.sh -O ${globals.vap_dir}/vap.sh;
-      wget ${settings.installerBaseUrl}/installer/reconfigure.sh -O ${globals.vap_dir}/reconfigure.sh;
+      wget ${globals.installerBaseUrl}/installer/VAP.yaml -O ${globals.vap_dir}/VAP.yaml;
+      wget ${globals.installerBaseUrl}/installer/VAP_user.yaml -O ${globals.vap_dir}/VAP_user.yaml;
+      wget ${globals.installerBaseUrl}/installer/infra.sh -O ${globals.vap_dir}/infra.sh;
+      wget ${globals.installerBaseUrl}/installer/user.sh -O ${globals.vap_dir}/user.sh;
+      wget ${globals.installerBaseUrl}/installer/vap.sh -O ${globals.vap_dir}/vap.sh;
+      wget ${globals.installerBaseUrl}/installer/reconfigure.sh -O ${globals.vap_dir}/reconfigure.sh;
 
   installOSclient: 
     - cmd[cp]: |- 
