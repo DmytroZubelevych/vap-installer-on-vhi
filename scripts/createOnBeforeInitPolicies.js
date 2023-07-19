@@ -99,7 +99,7 @@ function prepareImageList(values) {
     return aResultValues;
 }
 
-var settings = jps.settings.create;
+var settings = jps.settings;
 var fields = {};
 for (var i = 0, field; field = jps.settings.create.fields[i]; i++)
   fields[field.name] = field;
