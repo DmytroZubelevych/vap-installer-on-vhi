@@ -13,7 +13,6 @@ globals:
   vap_dir: /var/www/webroot
   vap_settings: /var/www/webroot/.vapenv
   openstack: /opt/jelastic-python311/bin/openstack
-  installerBaseUrl: ${settings.installerBaseUrl}
 
 settings:
   configure:
@@ -376,7 +375,7 @@ settings:
        required: true
        values: subnetListPrepared      
 
-    onBeforeInit: https://raw.githubusercontent.com/DmytroZubelevych/vap-installer-on-vhi/master/scripts/createOnBeforeInitPolicies.js
+    onBeforeInit: /scripts/createOnBeforeInitPolicies.js
      
 buttons:
 - caption: Configure
@@ -448,12 +447,12 @@ actions:
 
   getScripts:
     cmd[cp]: |-
-      wget ${globals.installerBaseUrl}/installer/VAP.yaml -O ${globals.vap_dir}/VAP.yaml;
-      wget ${globals.installerBaseUrl}/installer/VAP_user.yaml -O ${globals.vap_dir}/VAP_user.yaml;
-      wget ${globals.installerBaseUrl}/installer/infra.sh -O ${globals.vap_dir}/infra.sh;
-      wget ${globals.installerBaseUrl}/installer/user.sh -O ${globals.vap_dir}/user.sh;
-      wget ${globals.installerBaseUrl}/installer/vap.sh -O ${globals.vap_dir}/vap.sh;
-      wget ${globals.installerBaseUrl}/installer/reconfigure.sh -O ${globals.vap_dir}/reconfigure.sh;
+      wget ${baseUrl}/installer/VAP.yaml -O ${globals.vap_dir}/VAP.yaml;
+      wget ${baseUrl}/installer/VAP_user.yaml -O ${globals.vap_dir}/VAP_user.yaml;
+      wget ${baseUrl}/installer/infra.sh -O ${globals.vap_dir}/infra.sh;
+      wget ${baseUrl}/installer/user.sh -O ${globals.vap_dir}/user.sh;
+      wget ${baseUrl}/installer/vap.sh -O ${globals.vap_dir}/vap.sh;
+      wget ${baseUrl}/installer/reconfigure.sh -O ${globals.vap_dir}/reconfigure.sh;
 
   installOSclient: 
     - cmd[cp]: |- 
