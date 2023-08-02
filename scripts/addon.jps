@@ -414,6 +414,7 @@ onInstall:
 
 actions:
   configure:
+    - getScripts
     - if (${settings.ssh_key_check:true}):
         - setGlobals:
             sshCmd: "--new-ssh-key-name=${settings.ssh_key_name}"
@@ -458,6 +459,7 @@ actions:
         pip install python-heatclient
   
   create:
+    - getScripts
     - createCmd: >-
         bash ${globals.vap_dir}/vap.sh create 
         --infra-flavor=${settings.infra_cpu_ram} 
