@@ -482,4 +482,14 @@ actions:
         --vap-platform-data-size=${settings.upload_docker_cache_size} 
         --format=json
       script: |
-        return { result: 0, cmd: createCmd }
+        var resp = jelastic.env.control.ExecCmdById('${env.envName}', session, '${nodes.cp.master.id}', toJSON([{ command: createCmd }]), true);
+        if (resp.result != 0) return resp;
+        try {
+          respOut = JSON.parse(resp.responses[0].out) || [];
+        } catch (ex) {
+          return { type: "error", message: "cannot parse response out: " + ex }
+        }
+        if (respOut.result == 100) return { type: "warning", message: respOut.out };
+        if (respOut.result == 99) return { result: 99 };
+        if (respOut.result == 0) return { result: 0 };
+        return respOut;
