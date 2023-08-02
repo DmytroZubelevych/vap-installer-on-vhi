@@ -420,7 +420,7 @@ actions:
     - else:
         - setGlobals:
             sshCmd: ""
-    - configureCmd: >
+    - configureCmd: >-
         bash ${globals.vap_dir}/vap.sh configure 
         --project-domain=${settings.vhi_proj_domain_name} 
         --user-domain=${settings.vhi_user_domain_name} 
@@ -429,7 +429,7 @@ actions:
         --password=${settings.vhi_password} 
         --url=${settings.vhi_url} 
         --vap-stack-name=${settings.vap_stack_name} 
-        ${globals.sshCmd} --format=json 
+        ${globals.sshCmd} --format=json
       script: |
         var resp = jelastic.env.control.ExecCmdById('${env.envName}', session, '${nodes.cp.master.id}', toJSON([{ command: configureCmd }]), true);
         if (resp.result != 0) return resp;
@@ -458,7 +458,7 @@ actions:
         pip install python-heatclient
   
   create:
-    - createCmd: >
+    - createCmd: >-
         bash ${globals.vap_dir}/vap.sh create 
         --infra-flavor=${settings.infra_cpu_ram} 
         --user-flavor=${settings.user_cpu_ram} 
