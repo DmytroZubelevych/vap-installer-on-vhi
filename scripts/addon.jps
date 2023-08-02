@@ -375,7 +375,7 @@ settings:
        required: true
        values: subnetListPrepared      
 
-    onBeforeInit: /scripts/createOnBeforeInitPolicies.js
+    onBeforeInit: createOnBeforeInitPolicies.js
      
 buttons:
 - caption: Configure
@@ -415,6 +415,9 @@ onInstall:
 actions:
 
   configure:
+    - script: "return { result: 0, baseUrl: '${baseUrl}'.replace('scripts/', '') }"
+    - setGlobals:
+        baseUrl: ${response.baseUrl}    
     - getScripts
     - if (${settings.ssh_key_check:true}):
         - setGlobals:
