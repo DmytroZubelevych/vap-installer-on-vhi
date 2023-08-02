@@ -411,13 +411,12 @@ onInstall:
       echo "VAP installer add-on logs" > /var/log/installer.log;
       chown jelastic /var/log/installer.log;
     user: root
-
   - installOSclient
   - getScripts
 
 actions:
   configure:
-    - getScriptsTest
+    - getScripts
     - if (${settings.ssh_key_check:true}):
         - setGlobals:
             sshCmd: "--new-ssh-key-name=${settings.ssh_key_name}"
@@ -449,15 +448,6 @@ actions:
 
   getScripts:
     cmd[cp]: |-
-      wget ${baseUrl}../installer/VAP.yaml -O ${globals.vap_dir}/VAP.yaml;
-      wget ${baseUrl}../installer/VAP_user.yaml -O ${globals.vap_dir}/VAP_user.yaml;
-      wget ${baseUrl}../installer/infra.sh -O ${globals.vap_dir}/infra.sh;
-      wget ${baseUrl}../installer/user.sh -O ${globals.vap_dir}/user.sh;
-      wget ${baseUrl}../installer/vap.sh -O ${globals.vap_dir}/vap.sh;
-      wget ${baseUrl}../installer/reconfigure.sh -O ${globals.vap_dir}/reconfigure.sh;
-
-  getScriptsTest:
-    cmd[cp]: |-
       wget ${globals.baseUrl}/installer/VAP.yaml -O ${globals.vap_dir}/VAP.yaml;
       wget ${globals.baseUrl}/installer/VAP_user.yaml -O ${globals.vap_dir}/VAP_user.yaml;
       wget ${globals.baseUrl}/installer/infra.sh -O ${globals.vap_dir}/infra.sh;
@@ -471,7 +461,7 @@ actions:
         pip install python-heatclient
   
   create:
-    - getScriptsTest
+    - getScripts
     - createCmd: >-
         bash ${globals.vap_dir}/vap.sh create 
         --infra-flavor=${settings.infra_cpu_ram} 
