@@ -404,6 +404,9 @@ responses:
       Please check the **/var/log/installer.log** log file for details. 
 
 onInstall:
+  - script: "return { result: 0, baseUrl: '${baseUrl}'.replace('scripts/', '') }"
+  - setGlobals:
+      baseUrl: ${response.baseUrl}    
   - cmd[cp]: |-
       echo "VAP installer add-on logs" > /var/log/installer.log;
       chown jelastic /var/log/installer.log;
@@ -415,9 +418,6 @@ onInstall:
 actions:
 
   configure:
-    - script: "return { result: 0, baseUrl: '${baseUrl}'.replace('scripts/', '') }"
-    - setGlobals:
-        baseUrl: ${response.baseUrl}    
     - getScripts
     - if (${settings.ssh_key_check:true}):
         - setGlobals:
