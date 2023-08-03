@@ -1,3 +1,4 @@
+var baseUrl = '${baseUrl}'.replace('scripts/', '');
 var resp = jelastic.env.control.ExecCmdById('${env.envName}', session, '${nodes.cp.master.id}', toJSON([{
     "command": "bash /var/www/webroot/reconfigure.sh"
 }]), true);
@@ -105,6 +106,7 @@ for (var i = 0, field; field = jps.settings.create.fields[i]; i++)
   fields[field.name] = field;
 var instTypeFields = fields["inst_type"].showIf;
 instTypeFields.poc[1].values = infraFlavorListPrepared;
+instTypeFields.poc[1].tooltip.text = "testtesttetstest";
 instTypeFields.poc[2].values = userFlavorListPrepared;
 instTypeFields.sb[1].values = infraFlavorListPrepared;
 instTypeFields.sb[2].values = userFlavorListPrepared;
