@@ -61,17 +61,7 @@ settings:
         tooltip: "<span>Come up with VAP Project Domain Name</span>"
         required: true
         
-      - type: toggle
-        name: ssh_key_check
-        caption: New SSH Key
-        tooltip: "<span>If you have no SSH key in VHI cluster tick on the checkbox and come up with SSH key name. A new SSH key pair will be generated and injected into your environment and added to VHI cluster automatically.</span>"
-        showIf:
-          true:
-            - type: string
-              name: ssh_key_name
-              caption: New SSH Key Name
-              required: true
-              tooltip: "Minimum length of 3 symbols is required."
+    onBeforeInit: https://raw.githubusercontent.com/DmytroZubelevych/vap-installer-on-vhi/master/scripts/configureOnBeforeInit.js
         
   create:
     fields:
