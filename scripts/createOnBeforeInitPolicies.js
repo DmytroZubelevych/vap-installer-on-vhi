@@ -106,7 +106,7 @@ for (var i = 0, field; field = jps.settings.create.fields[i]; i++)
   fields[field.name] = field;
 var instTypeFields = fields["inst_type"].showIf;
 instTypeFields.poc[1].values = infraFlavorListPrepared;
-instTypeFields.poc[1].tooltip.text = "testtesttetstest";
+instTypeFields.poc[1].tooltip.text = "testtesttetstest" + baseUrl;
 instTypeFields.poc[2].values = userFlavorListPrepared;
 instTypeFields.sb[1].values = infraFlavorListPrepared;
 instTypeFields.sb[2].values = userFlavorListPrepared;
