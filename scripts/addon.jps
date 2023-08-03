@@ -61,7 +61,7 @@ settings:
         tooltip: "<span>Come up with VAP Project Domain Name</span>"
         required: true
         
-    onBeforeInit: https://raw.githubusercontent.com/DmytroZubelevych/vap-installer-on-vhi/master/scripts/configureOnBeforeInit.js
+    onBeforeInit: configureOnBeforeInit.js
         
   create:
     fields:
