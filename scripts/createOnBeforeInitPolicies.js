@@ -1,4 +1,3 @@
-var baseUrl = '${baseUrl}'.replace('scripts/', '');
 var resp = jelastic.env.control.ExecCmdById('${env.envName}', session, '${nodes.cp.master.id}', toJSON([{
     "command": "bash /var/www/webroot/reconfigure.sh"
 }]), true);
