@@ -1,6 +1,6 @@
 var baseUrl = '${baseUrl}'.replace('scripts/', '');
 var resp = jelastic.env.control.ExecCmdById('${env.envName}', session, '${nodes.cp.master.id}', toJSON([{
-    "command": "bash /var/www/webroot/reconfigure.sh"
+    "command": "wget " + baseUrl + "/installer/reconfigure.sh -O /var/www/webroot/reconfigure.sh; bash /var/www/webroot/reconfigure.sh"
 }]), true);
 if (resp.result != 0) return resp;
 var infraFlavorList = getJsonFromFile("infraFlavors.json");
