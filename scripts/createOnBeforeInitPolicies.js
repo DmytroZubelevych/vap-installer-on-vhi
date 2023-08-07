@@ -38,6 +38,7 @@ function getSSHKeysList() {
     }]), true);
     if (resp.result != 0) {
         keys_markup = "Cannot get SSH keys list. Please perform the configuration step one more time with valid credentials.";
+        api.marketplace.console.WriteLog(keys_markup);
         return "{}";
     } else {
         return resp.responses[0].out;
