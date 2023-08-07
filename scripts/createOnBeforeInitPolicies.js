@@ -37,9 +37,11 @@ function getSSHKeysList() {
         "command": cmd
     }]), true);
     if (resp.result != 0) {
-        keys_markup = "Cannot get keys list. Please perform the configuration step one mpre time with valid credentials."
+        keys_markup = "Cannot get keys list. Please perform the configuration step one more time with valid credentials.";
+        return "{}";
+    } else {
+        return resp.responses[0].out;
     }
-    return resp.responses[0].out;
 }
 
 function prepareSSHKeysList(values) {
