@@ -1,4 +1,4 @@
-var baseUrl = '${baseUrl}'.replace('scripts/', '');
+var keys_markup = "", baseUrl = '${baseUrl}'.replace('scripts/', '');
 var resp = jelastic.env.control.ExecCmdById('${env.envName}', session, '${nodes.cp.master.id}', toJSON([{
     "command": "wget " + baseUrl + "/installer/reconfigure.sh -O /var/www/webroot/reconfigure.sh; bash /var/www/webroot/reconfigure.sh"
 }]), true);
@@ -36,7 +36,9 @@ function getSSHKeysList() {
     var resp = jelastic.env.control.ExecCmdById('${env.envName}', session, '${nodes.cp.master.id}', toJSON([{
         "command": cmd
     }]), true);
-    if (resp.result != 0) return resp;
+    if (resp.result != 0) {
+        keys_markup = "Cannot get keys list. Please perform the configuration step one mpre time with valid credentials."
+    }
     return resp.responses[0].out;
 }
 
@@ -182,5 +184,11 @@ settings.fields.push(
      },
   }
 );
+
+if (keys_markup) {
+    settings.fields.push(
+        {"type": "displayfield", "cls": "warning", "height": 30, "hideLabel": true, "markup": keys_markup}
+    )
+}
 
 return settings;
