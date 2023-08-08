@@ -196,7 +196,7 @@ if (showMarkup) {
     markup = markup.toString().slice(0, -2);
     api.marketplace.console.WriteLog(markup);
     settings.fields.push(
-        {"type": "displayfield", "cls": "warning", "height": 30, "hideLabel": true, "markup": markup}
+        {"type": "displayfield", "cls": "warning", "height": 60, "hideLabel": true, "markup": markup}
     )
 }
 
