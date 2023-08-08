@@ -44,7 +44,6 @@ function getSSHKeysList() {
     }]), true);
     if (resp.result != 0) {
         markup += "SSH key names, ";
-        api.marketplace.console.WriteLog(markup);
         return "{}";
     } else {
         return resp.responses[0].out;
@@ -195,6 +194,7 @@ settings.fields.push(
 );
 
 if (markup) {
+    api.marketplace.console.WriteLog(markup);
     settings.fields.push(
         {"type": "displayfield", "cls": "warning", "height": 30, "hideLabel": true, "markup": markup}
     )
