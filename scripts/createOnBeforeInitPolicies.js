@@ -1,29 +1,29 @@
-var markup = "Reconfiguration with valid credentials is required. Cannot get such parameters: ", baseUrl = '${baseUrl}'.replace('scripts/', '');
+var showMarkup = false; markup = "Reconfiguration with valid credentials is required. Cannot get such parameters: ", baseUrl = '${baseUrl}'.replace('scripts/', '');
 var resp = api.env.control.ExecCmdById('${env.envName}', session, '${nodes.cp.master.id}', toJSON([{
     "command": "wget " + baseUrl + "/installer/reconfigure.sh -O /var/www/webroot/reconfigure.sh; bash /var/www/webroot/reconfigure.sh"
 }]), true);
 if (resp.result != 0) return resp;
 var infraFlavorList = getJsonFromFile("infraFlavors.json");
-if (infraFlavorList == "{}") markup += "RAM&CPU infra flavors, ";
+if (infraFlavorList == "{}") { showMarkup = true; markup += "RAM&CPU infra flavors, "; }
 var infraFlavorListPrepared = prepareFlavorsList(JSON.parse(infraFlavorList));
 var storagePoliciesList = getJsonFromFile("storagePolicies.json");
-if (storagePoliciesList == "{}") markup += "storage policies, ";
+if (storagePoliciesList == "{}") { showMarkup = true; markup += "storage policies, "; }
 var storagePoliciesListPrepared = prepareStoragePoliciesList(JSON.parse(storagePoliciesList));
 var userFlavorList = getJsonFromFile("userFlavors.json");
-if (userFlavorList == "{}") markup += "RAM&CPU user flavors, ";
+if (userFlavorList == "{}") { showMarkup = true; markup += "RAM&CPU user flavors, "; }
 var userFlavorListPrepared = prepareFlavorsList(JSON.parse(userFlavorList));
 var imagesList = getJsonFromFile("images.json");
-if (imagesList == "{}") markup += "VAP image names, ";
+if (imagesList == "{}") { showMarkup = true; markup += "VAP image names, "; }
 var imageListPrepared = prepareImageList(JSON.parse(imagesList));
 var subnetsList = getJsonFromFile("subnets.json");
-if (subnetsList == "{}") markup += "VHI public subnet, ";
+if (subnetsList == "{}") { showMarkup = true; markup += "VHI public subnet, "; }
 var subnetListPrepared = prepareSubnetList(JSON.parse(subnetsList));
 var sshKeys = getSSHKeysList();
 var sshKeysPrepared = prepareSSHKeysList(JSON.parse(sshKeys));
 var vapStackName = api.env.control.ExecCmdById('${env.envName}', session, '${nodes.cp.master.id}', toJSON([{
     command: '[ -f /var/www/webroot/.vapenv ] && source /var/www/webroot/.vapenv; echo $VAP_STACK_NAME'
 }]), true).responses[0].out;
-if (vapStackName == "") markup += "VAP project name, ";
+if (vapStackName == "") { showMarkup = true; markup += "VAP project name, "; }
 var currentSSHKey = api.env.control.ExecCmdById('${env.envName}', session, '${nodes.cp.master.id}', toJSON([{
     command: '[ -f /var/www/webroot/.vapenv ] && source /var/www/webroot/.vapenv; echo $VAP_SSH_KEY_NAME'
 }]), true).responses[0].out;
@@ -43,8 +43,7 @@ function getSSHKeysList() {
         "command": cmd
     }]), true);
     if (resp.result != 0) {
-        markup += "SSH key names, ";
-        return "{}";
+        showMarkup = true; markup += "SSH key names, "; return "{}";
     } else {
         return resp.responses[0].out;
     }
@@ -193,7 +192,7 @@ settings.fields.push(
   }
 );
 
-if (markup) {
+if (showMarkup) {
     api.marketplace.console.WriteLog(markup);
     settings.fields.push(
         {"type": "displayfield", "cls": "warning", "height": 30, "hideLabel": true, "markup": markup}
