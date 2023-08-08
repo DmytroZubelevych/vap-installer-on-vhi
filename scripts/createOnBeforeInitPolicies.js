@@ -4,7 +4,7 @@ var resp = api.env.control.ExecCmdById('${env.envName}', session, '${nodes.cp.ma
 }]), true);
 if (resp.result != 0) return resp;
 var infraFlavorList = getJsonFromFile("infraFlavors.json");
-//if (infraFlavorList == "{}") markup += " infra flavors,";
+if (infraFlavorList == "{}") markup += " infra flavors,";
 var infraFlavorListPrepared = prepareFlavorsList(JSON.parse(infraFlavorList));
 var storagePoliciesList = getJsonFromFile("storagePolicies.json");
 //if (storagePoliciesList == "{}") markup += " storage policies,";
