@@ -30,7 +30,7 @@ resp = api.env.control.ExecCmdById('${env.envName}', session, '${nodes.cp.master
     command: '[ -f /var/www/webroot/.vapenv ] && source /var/www/webroot/.vapenv; echo $VAP_SSH_KEY_NAME'
 }]), true);
 if (resp.result != 0) return resp;
-var currentSSHKey = aresp.responses[0].out;
+var currentSSHKey = resp.responses[0].out;
 
 function getJsonFromFile(jsonFile) {
     var cmd = "cat /var/www/webroot/" + jsonFile;
