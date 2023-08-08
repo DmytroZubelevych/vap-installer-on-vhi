@@ -1,4 +1,4 @@
-var keys_markup = "", baseUrl = '${baseUrl}'.replace('scripts/', '');
+var keys_markup = "", images_list_markup = "", subnets_list_markup = "", baseUrl = '${baseUrl}'.replace('scripts/', '');
 var resp = api.env.control.ExecCmdById('${env.envName}', session, '${nodes.cp.master.id}', toJSON([{
     "command": "wget " + baseUrl + "/installer/reconfigure.sh -O /var/www/webroot/reconfigure.sh; bash /var/www/webroot/reconfigure.sh"
 }]), true);
@@ -10,6 +10,7 @@ var storagePoliciesListPrepared = prepareStoragePoliciesList(JSON.parse(storageP
 var userFlavorList = getJsonFromFile("userFlavors.json");
 var userFlavorListPrepared = prepareFlavorsList(JSON.parse(userFlavorList));
 var imagesList = getJsonFromFile("images.json");
+if (imagesList == "{}") images_list_markup = "Cannot get images list. Please perform the configuration step one more time with valid credentials.";
 var imageListPrepared = prepareImageList(JSON.parse(imagesList));
 var subnetsList = getJsonFromFile("subnets.json");
 var subnetListPrepared = prepareSubnetList(JSON.parse(subnetsList));
@@ -191,6 +192,12 @@ settings.fields.push(
 if (keys_markup) {
     settings.fields.push(
         {"type": "displayfield", "cls": "warning", "height": 30, "hideLabel": true, "markup": keys_markup}
+    )
+}
+
+if (images_list_markup) {
+    settings.fields.push(
+        {"type": "displayfield", "cls": "warning", "height": 30, "hideLabel": true, "markup": images_list_markup}
     )
 }
 
