@@ -27,7 +27,7 @@ function getJsonFromFile(jsonFile) {
     var resp = api.env.control.ExecCmdById('${env.envName}', session, '${nodes.cp.master.id}', toJSON([{
         "command": cmd
     }]), true);
-    if (resp.result != 0) rthrow resp;
+    if (resp.result != 0) throw resp;
     return resp.responses[0].out;
 }
 
