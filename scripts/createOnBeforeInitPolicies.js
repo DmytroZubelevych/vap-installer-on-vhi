@@ -1,4 +1,4 @@
-var showMarkup = false; markup = "Reconfiguration with valid credentials is required. Cannot get such parameters: ", baseUrl = '${baseUrl}'.replace('scripts/', '');
+var showMarkup = false; markup = "Reconfiguration is required. Cannot get such parameters: ", baseUrl = '${baseUrl}'.replace('scripts/', '');
 var resp = api.env.control.ExecCmdById('${env.envName}', session, '${nodes.cp.master.id}', toJSON([{
     "command": "wget " + baseUrl + "/installer/reconfigure.sh -O /var/www/webroot/reconfigure.sh; bash /var/www/webroot/reconfigure.sh"
 }]), true);
@@ -16,7 +16,7 @@ var imagesList = getJsonFromFile("images.json");
 if (imagesList == "{}") { showMarkup = true; markup += "VAP image names, "; }
 var imageListPrepared = prepareImageList(JSON.parse(imagesList));
 var subnetsList = getJsonFromFile("subnets.json");
-if (subnetsList == "{}") { showMarkup = true; markup += "VHI public subnet, "; }
+if (subnetsList == "{}") { showMarkup = true; markup += "VHI public subnets, "; }
 var subnetListPrepared = prepareSubnetList(JSON.parse(subnetsList));
 var sshKeys = getSSHKeysList();
 var sshKeysPrepared = prepareSSHKeysList(JSON.parse(sshKeys));
@@ -193,6 +193,7 @@ settings.fields.push(
 );
 
 if (showMarkup) {
+    markup = markup.slice(0, -2);
     api.marketplace.console.WriteLog(markup);
     settings.fields.push(
         {"type": "displayfield", "cls": "warning", "height": 30, "hideLabel": true, "markup": markup}
