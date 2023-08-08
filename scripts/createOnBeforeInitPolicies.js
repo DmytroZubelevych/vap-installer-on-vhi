@@ -1,4 +1,4 @@
-var showMarkup = false; markup = "Reconfiguration is required. Cannot get such parameters: ", baseUrl = '${baseUrl}'.replace('scripts/', '');
+var showMarkup = false; markup = "Reconfiguration with valid credentials is required. Cannot get such parameters: ", baseUrl = '${baseUrl}'.replace('scripts/', '');
 var resp = api.env.control.ExecCmdById('${env.envName}', session, '${nodes.cp.master.id}', toJSON([{
     "command": "wget " + baseUrl + "/installer/reconfigure.sh -O /var/www/webroot/reconfigure.sh; bash /var/www/webroot/reconfigure.sh"
 }]), true);
@@ -196,7 +196,7 @@ if (showMarkup) {
     markup = markup.toString().slice(0, -2);
     api.marketplace.console.WriteLog(markup);
     settings.fields.push(
-        {"type": "displayfield", "cls": "warning", "height": 60, "hideLabel": true, "markup": markup}
+        {"type": "displayfield", "cls": "warning", "height": 50, "hideLabel": true, "markup": markup}
     )
 }
 
