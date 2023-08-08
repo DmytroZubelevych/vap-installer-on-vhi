@@ -39,7 +39,7 @@ function getSSHKeysList() {
     }]), true);
     if (resp.result != 0) {
         markup += "keys,";
-        api.marketplace.console.WriteLog(keys_markup);
+        api.marketplace.console.WriteLog(markup);
         return "{}";
     } else {
         return resp.responses[0].out;
