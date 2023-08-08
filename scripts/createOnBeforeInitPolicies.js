@@ -1,5 +1,5 @@
 var keys_markup = "", baseUrl = '${baseUrl}'.replace('scripts/', '');
-var resp = jelastic.env.control.ExecCmdById('${env.envName}', session, '${nodes.cp.master.id}', toJSON([{
+var resp = api.env.control.ExecCmdById('${env.envName}', session, '${nodes.cp.master.id}', toJSON([{
     "command": "wget " + baseUrl + "/installer/reconfigure.sh -O /var/www/webroot/reconfigure.sh; bash /var/www/webroot/reconfigure.sh"
 }]), true);
 if (resp.result != 0) return resp;
@@ -15,16 +15,16 @@ var subnetsList = getJsonFromFile("subnets.json");
 var subnetListPrepared = prepareSubnetList(JSON.parse(subnetsList));
 var sshKeys = getSSHKeysList();
 var sshKeysPrepared = prepareSSHKeysList(JSON.parse(sshKeys));
-var vapStackName = jelastic.env.control.ExecCmdById('${env.envName}', session, '${nodes.cp.master.id}', toJSON([{
+var vapStackName = api.env.control.ExecCmdById('${env.envName}', session, '${nodes.cp.master.id}', toJSON([{
     command: '[ -f /var/www/webroot/.vapenv ] && source /var/www/webroot/.vapenv; echo $VAP_STACK_NAME'
 }]), true).responses[0].out;
-var currentSSHKey = jelastic.env.control.ExecCmdById('${env.envName}', session, '${nodes.cp.master.id}', toJSON([{
+var currentSSHKey = api.env.control.ExecCmdById('${env.envName}', session, '${nodes.cp.master.id}', toJSON([{
     command: '[ -f /var/www/webroot/.vapenv ] && source /var/www/webroot/.vapenv; echo $VAP_SSH_KEY_NAME'
 }]), true).responses[0].out;
 
 function getJsonFromFile(jsonFile) {
     var cmd = "cat /var/www/webroot/" + jsonFile;
-    var resp = jelastic.env.control.ExecCmdById('${env.envName}', session, '${nodes.cp.master.id}', toJSON([{
+    var resp = api.env.control.ExecCmdById('${env.envName}', session, '${nodes.cp.master.id}', toJSON([{
         "command": cmd
     }]), true);
     if (resp.result != 0) return resp;
@@ -33,7 +33,7 @@ function getJsonFromFile(jsonFile) {
 
 function getSSHKeysList() {
     var cmd = "source /var/www/webroot/.vapenv; /opt/jelastic-python311/bin/openstack keypair list -f json"
-    var resp = jelastic.env.control.ExecCmdById('${env.envName}', session, '${nodes.cp.master.id}', toJSON([{
+    var resp = api.env.control.ExecCmdById('${env.envName}', session, '${nodes.cp.master.id}', toJSON([{
         "command": cmd
     }]), true);
     if (resp.result != 0) {
