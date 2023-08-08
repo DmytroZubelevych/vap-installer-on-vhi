@@ -7,22 +7,23 @@ var infraFlavorList = getJsonFromFile("infraFlavors.json");
 if (infraFlavorList == "{}") markup += "infra flavors, ";
 var infraFlavorListPrepared = prepareFlavorsList(JSON.parse(infraFlavorList));
 var storagePoliciesList = getJsonFromFile("storagePolicies.json");
-//if (storagePoliciesList == "{}") markup += "storage policies, ";
+if (storagePoliciesList == "{}") markup += "storage policies, ";
 var storagePoliciesListPrepared = prepareStoragePoliciesList(JSON.parse(storagePoliciesList));
 var userFlavorList = getJsonFromFile("userFlavors.json");
-//if (userFlavorList == "{}") markup += "user flavors, ";
+if (userFlavorList == "{}") markup += "user flavors, ";
 var userFlavorListPrepared = prepareFlavorsList(JSON.parse(userFlavorList));
 var imagesList = getJsonFromFile("images.json");
-//if (imagesList == "{}") markup += "images, ";
+if (imagesList == "{}") markup += "images, ";
 var imageListPrepared = prepareImageList(JSON.parse(imagesList));
 var subnetsList = getJsonFromFile("subnets.json");
-//if (subnetsList == "{}") markup += "subnets, ";
+if (subnetsList == "{}") markup += "subnets, ";
 var subnetListPrepared = prepareSubnetList(JSON.parse(subnetsList));
 var sshKeys = getSSHKeysList();
 var sshKeysPrepared = prepareSSHKeysList(JSON.parse(sshKeys));
 var vapStackName = api.env.control.ExecCmdById('${env.envName}', session, '${nodes.cp.master.id}', toJSON([{
     command: '[ -f /var/www/webroot/.vapenv ] && source /var/www/webroot/.vapenv; echo $VAP_STACK_NAME'
 }]), true).responses[0].out;
+if (vapStackName == "") markup += "stack name, ";
 var currentSSHKey = api.env.control.ExecCmdById('${env.envName}', session, '${nodes.cp.master.id}', toJSON([{
     command: '[ -f /var/www/webroot/.vapenv ] && source /var/www/webroot/.vapenv; echo $VAP_SSH_KEY_NAME'
 }]), true).responses[0].out;
@@ -42,7 +43,7 @@ function getSSHKeysList() {
         "command": cmd
     }]), true);
     if (resp.result != 0) {
-        markup += "keys,";
+        markup += "keys, ";
         api.marketplace.console.WriteLog(markup);
         return "{}";
     } else {
