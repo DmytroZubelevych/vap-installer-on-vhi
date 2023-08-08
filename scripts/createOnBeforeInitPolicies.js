@@ -107,7 +107,7 @@ function prepareImageList(values) {
 
 var settings = jps.settings.create;
 var fields = {};
-for (var i = 0, field; field = jps.settings.create.fields[i]; i++)
+for (let field of jps.settings.create.fields)
   fields[field.name] = field;
 var instTypeFields = fields["inst_type"].showIf;
 instTypeFields.poc[1].values = infraFlavorListPrepared;
