@@ -20,13 +20,17 @@ if (subnetsList == "{}") { showMarkup = true; markup += "VHI public subnets, "; 
 var subnetListPrepared = prepareSubnetList(JSON.parse(subnetsList));
 var sshKeys = getSSHKeysList();
 var sshKeysPrepared = prepareSSHKeysList(JSON.parse(sshKeys));
-var vapStackName = api.env.control.ExecCmdById('${env.envName}', session, '${nodes.cp.master.id}', toJSON([{
+resp = api.env.control.ExecCmdById('${env.envName}', session, '${nodes.cp.master.id}', toJSON([{
     command: '[ -f /var/www/webroot/.vapenv ] && source /var/www/webroot/.vapenv; echo $VAP_STACK_NAME'
-}]), true).responses[0].out;
+}]), true);
+if (resp.result != 0) return resp;
+var vapStackName = resp.responses[0].out;
 if (vapStackName == "") { showMarkup = true; markup += "VAP project name, "; }
-var currentSSHKey = api.env.control.ExecCmdById('${env.envName}', session, '${nodes.cp.master.id}', toJSON([{
+resp = api.env.control.ExecCmdById('${env.envName}', session, '${nodes.cp.master.id}', toJSON([{
     command: '[ -f /var/www/webroot/.vapenv ] && source /var/www/webroot/.vapenv; echo $VAP_SSH_KEY_NAME'
-}]), true).responses[0].out;
+}]), true);
+if (resp.result != 0) return resp;
+var currentSSHKey = aresp.responses[0].out;
 
 function getJsonFromFile(jsonFile) {
     var cmd = "cat /var/www/webroot/" + jsonFile;
